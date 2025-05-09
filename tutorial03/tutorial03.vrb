@@ -1,0 +1,24 @@
+\frametitle{Aufgabe 3.3 - Selbstorganisierende Liste (c)}
+	\begin{minted}[fontsize=\scriptsize]{java}
+public void removeDuplicates() {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+	\end{minted}

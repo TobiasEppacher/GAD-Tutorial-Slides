@@ -1,0 +1,395 @@
+\documentclass{beamer}
+\mode<presentation>
+{
+  \usetheme{ldv}
+  \setbeamercovered{transparent}
+}
+
+% Uncomment this if you're giving a presentation in german...
+\usepackage[ngerman]{babel}
+
+% ...and rename this to "Folie"
+\newcommand{\slidenomenclature}{Folie}
+
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{times}
+\usepackage{graphicx}
+\usepackage{fancyvrb}
+\usepackage{array}
+\usepackage{colortbl}
+\usepackage{tabularx}
+
+% Uncomment me when you need to insert code
+\usepackage{color}
+\usepackage{listings}
+\usepackage{minted}
+\usepackage{algpseudocode}
+% End Code
+
+\usepackage{datetime}
+
+% Uncomment me when you need video or sound
+% \usepackage{multimedia}
+% \usepackage{hyperref}
+% End video
+
+% Header
+\newcommand{\zwischentitel}{Woche 3}
+\newcommand{\leitthema}{Tobias Eppacher}
+\newcommand{\presdatum}{\formatdate{12}{5}{2025}}
+% End Header
+
+% Titlepage
+\title{Grundlagen: Algorithmen und Datenstrukturen}
+\author{Tobias Eppacher}
+\date{\presdatum}
+\institute{School of Computation, Information and Technology}
+\subtitle{Woche 3}
+% End Titlepage
+
+
+% Slides
+\begin{document}
+
+% 1. Slide: Titlepage
+\begin{frame}
+	\titlepage
+\end{frame}
+
+% 2. Slide: TOC
+\begin{frame}
+	\frametitle{Table of contents}
+	\tableofcontents[subsectionstyle=hide]
+\end{frame}
+
+% Further Slides
+\section{Aufgaben}
+
+\subsection{Zufallsvariablen}
+\begin{frame}
+	\frametitle{Aufgabe 3.1 - Zufallsvariablen}
+	\textbf{Binäre Zufallsvariablen} \\
+	\begin{itemize}
+		\item Binäre Zufallsvariable $Y$
+		\item Wert von $Y$ nur $0$ oder $1$
+		\item In dieser Aufgabe: konstante Wahrscheinlichkeiten \\
+		      $\mathbb{P}(Y=1) = c$ und $\mathbb{P}(Y=0)=1-c \quad c \in [0, 1]$
+		\item Erwartungswert: $\mathbb{E}[Y]=\sum_{y \in 0, 1} y * \mathbb{P}[Y=y]$ \\
+		      $\mathbb{E}[Y]=0 * \mathbb{P}[Y=0] + 1 * \mathbb{P}[Y=1] = c$
+	\end{itemize}
+	\medskip
+	\textit{Erwartungswert = Summe der möglichen Werte gewichtet mit deren Auftrittswahrscheinlichkeit}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Aufgabe 3.1 - Zufallsvariablen}
+
+	Gegeben sei eine Zahl $a \in {0, 1}$ sowie eine Zahlenfolge $(x_1, x_2, . . . , x_k)$, wobei $x_i \in {0, 1}$
+	für alle $i \in {1, . . . , k}$ gilt, wobei $k$ die Länge der Zahlenfolge ist. Gefragt ist, ob $a$ in der
+	Zahlenfolge vorkommt.
+
+	\begin{columns}[T]
+
+		\begin{column}{.50\textwidth}
+			\textbf{Input:} int $a$, int[] $(x_1, x_2, \dots, x_k)$
+			\begin{algorithmic}[1]
+				\State{int $i := 1$}
+				\While{$i \leq k$}
+				\If{$x_{i} = a$}
+				\State{\textbf{return} Ja}
+				\State{$xi := r(xi, y)$}
+				\State{$i := i + 1$}
+				\EndIf{}
+				\EndWhile{}
+			\end{algorithmic}
+		\end{column}
+		\begin{column}{.48\textwidth}
+			\begin{enumerate}
+				\item Erwartete Anzahl Vergleiche $x_i = a$ \\
+				      (\textit{Alle Eingaben gleich wahrscheinlich})
+				\item Asymptotisch erwartete Laufzeit
+			\end{enumerate}
+			\medskip
+			$\sum_{i=0}^{n} c^i = \frac{c^{n+1}-1}{c-1} \quad c \neq 1$
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}[t]
+	\frametitle{Aufgabe 3.1 - Zufallsvariablen}
+	Was ist die erwartete Anzahl an Vergleichen ($x_i = a$) bei gleicher Wahrscheinlichkeit für alle Eingaben?
+\end{frame}
+
+\begin{frame}[t]
+	\frametitle{Aufgabe 3.1 - Zufallsvariablen}
+	Was ist die asymptotisch erwartete Laufzeit?
+\end{frame}
+
+\subsection{Komplexitätsanalyse}
+\begin{frame}[fragile]
+	\frametitle{Aufgabe 3.2 - Komplexitätsanalyse}
+	Gegeben sei eine Zahlenfolge $A[0], \dots, A[n - 1]$, wobei die Länge $n$ ist, und eine Zahl $x$ aus
+	dieser Folge. \\
+	Gehen Sie im Folgenden davon aus, dass die Wahrscheinlichkeit von Duplikaten
+	in $A$ vernachlässigbar gering ist, das heißt ihre Anzahl ist im Durchschnitt in $\mathcal{O}(1)$.
+
+	\medskip
+	\begin{minted}[fontsize=\footnotesize]{c}
+// count(x, A)
+int c = 0;
+for (int i = 0; i < n; i++)
+	if (A[i] == x) c++;
+return c;
+	\end{minted}
+\end{frame}
+
+\begin{frame}[t, fragile]
+	\frametitle{Aufgabe 3.2 - Komplexitätsanalyse (a)}
+	Bestimmen Sie die Komplexität von \mintinline{java}{count} im worst-case, best-case und average-case.
+	\medskip
+	\begin{minted}[fontsize=\footnotesize]{c}
+// count(x, A)
+int c = 0;
+for (int i = 0; i < n; i++)
+	if (A[i] == x) c++;
+return c;
+	\end{minted}
+\end{frame}
+
+\begin{frame}[t]
+	\frametitle{Aufgabe 3.2 - Komplexitätsanalyse (b)}
+	Überlegen Sie sich einen alternativen Algorithmus, der auf \textbf{sortierten} Folgen arbeitet,
+	und bestimmen Sie dessen Komplexität im worst-case, best-case und average-case.
+	Vergleichen Sie diese mit den Ergebnissen aus Aufgabenteil a).
+\end{frame}
+
+\begin{frame}[t, fragile]
+	\frametitle{Aufgabe 3.2 - Komplexitätsanalyse (b)}
+	\begin{minted}[fontsize=\footnotesize]{c}
+// count(x, A) mit early stopping
+int c = 0;
+for (int i = 0; i < n; i++) {
+	if (A[i] == x) { c++ };
+	else { if (A[i] > x) return c; }
+}
+return c;
+	\end{minted}
+\end{frame}
+
+\begin{frame}[t, fragile]
+	\frametitle{Aufgabe 3.2 - Komplexitätsanalyse (b)}
+	\begin{minted}[fontsize=\scriptsize]{c}
+// count(x, A) mit binärer Suche 
+int c = 0, l = 0, r = n - 1, m;
+while (l <= r) {
+  m = (l + r) / 2;
+  if (A[m] == x) {
+    while (m != -1 && A[m] == x) {
+      m--; c++;
+    }
+    m = (l + r) / 2 + 1;
+    while (m != A.length && A[m] == x) {
+      m++; c++;
+    }
+    return c;
+  }
+  if (A[m] < x) l = m + 1;
+  else r = m - 1;
+}
+return c;
+	\end{minted}
+\end{frame}
+
+\begin{frame}[t]
+	\frametitle{Aufgabe 3.2 - Komplexitätsanalyse (b)}
+	Andere Vorschläge? (wenn genug Zeit)
+\end{frame}
+
+\begin{frame}[t]
+	\frametitle{Aufgabe 3.2 - Komplexitätsanalyse (c)}
+	Lässt sich die Komplexität verbessern, indem man die Folge zunächst sortiert?
+\end{frame}
+
+
+\subsection{Selbstorganisierende Liste}
+\begin{frame}[fragile]
+	\frametitle{Aufgabe 3.3 - Selbstorganisierende Liste}
+	\begin{minted}[fontsize=\scriptsize]{java}
+public class SelfOrganizingList<T> {
+  private static class Node<T> {
+    T data;
+    Node<T> next;
+
+    Node(T d) {
+      data = d;
+      next = null;
+    }
+  }
+
+  public void add(T data) {
+    // TODO: Neuer Knoten am Listenende + O(1) Laufzeit
+  }
+
+  public Optional<T> findFirst(Predicate<T> p) {
+    // TODO: return das erste p.test(n.data) == true
+  }
+
+  public void removeDuplicates() {
+    // TODO: Behalte erste Vorkommen von Elementen + O(1) Speicher
+  }
+}
+	\end{minted}
+\end{frame}
+
+\begin{frame}[t, fragile]
+	\frametitle{Aufgabe 3.3 - Selbstorganisierende Liste (a)}
+	\begin{minted}[fontsize=\scriptsize]{java}
+public void add(T data) {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+	\end{minted}
+\end{frame}
+
+\begin{frame}[t, fragile]
+	\frametitle{Aufgabe 3.3 - Selbstorganisierende Liste (b)}
+	\begin{minted}[fontsize=\scriptsize]{java}
+public Optional<T> findFirst(Predicate<T> p) {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+	\end{minted}
+\end{frame}
+
+\begin{frame}[t, fragile]
+	\frametitle{Aufgabe 3.3 - Selbstorganisierende Liste (c)}
+	\begin{minted}[fontsize=\scriptsize]{java}
+public void removeDuplicates() {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+	\end{minted}
+\end{frame}
+
+\subsection{Aufgabe 3.4 - Algorithmen und Laufzeiten}
+\begin{frame}
+	\frametitle{Aufgabe 3.4 - Algorithmen und Laufzeiten}
+	Entwerfen Sie im Folgenden zwei einfache Funktionen und erarbeiten Sie korrekten \mintinline{java}{java}-Code. \\
+	Bestimmen Sie dann die asymptotische Laufzeit Ihres Algorithmus. \\
+	Sie dürfen in ihren Algorithmen ausschließlich Schleifen, If-Statements, Additionen, Subtraktion sowie Multiplikation verwenden.
+
+	\medskip
+	\renewcommand{\theenumi}{\alph{enumi}}
+	\begin{enumerate}
+		\item Ganzzahldivision von zwei \mintinline{java}{int} $a > 0$ und $b > 0$
+		\item Rest für Division (Modulo) von zwei \mintinline{java}{int} $a > 0$ und $b \neq 0$
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}[t]
+	\frametitle{Aufgabe 3.4 - Algorithmen und Laufzeiten (a)}
+	Ganzzahldivision von zwei \mintinline{java}{int} $a > 0$ und $b > 0$
+\end{frame}
+
+\begin{frame}[t]
+	\frametitle{Aufgabe 3.4 - Algorithmen und Laufzeiten (b)}
+	Rest für Division (Modulo) von zwei \mintinline{java}{int} $a > 0$ und $b \neq 0$
+\end{frame}
+
+\section{E-Aufgaben}
+\begin{frame}
+	\frametitle{E-Aufgaben}
+	\begin{itemize}
+		\item Aufgabe 3.5 - Noch mehr Spaß mit $\mathcal{O}$ \\
+		      \begin{itemize}
+			      \item Gute Überprüfung für Verständnis von $\mathcal{O}$
+			      \item Kleiner Induktionsbeweis
+		      \end{itemize}
+		\item Aufgabe 3.6 - Zufallsvariablen-Caching
+		      \begin{itemize}
+			      \item Übung zu Zufallsvariablen
+		      \end{itemize}
+	\end{itemize}
+\end{frame}
+
+\section{Hausaufgaben}
+\begin{frame}
+	\frametitle{Hausaufgaben}
+	\begin{itemize}
+		\item Hausaufgabe 3 - Dynamisches Array \\
+		      (Deadline: 21.05.2025)
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\textbf{Fragen?}
+	\begin{itemize}
+		\item Nach Übung gerne bei mir melden
+		\item Tutoriumschannel oder DM an mich auf Zulip
+		\item Vorlesungschannels von GAD auf Zulip (insbesondere bei Hausaufgaben)
+	\end{itemize}
+
+	\medskip
+	\textbf{Feedback oder Verbesserungsvorschläge?} \\
+	Gerne nach dem Tutorium mit mir quatschen oder DM auf Zulip
+
+	\medskip
+	\textbf{Bis nächste Woche!}
+\end{frame}
+
+% End Slides
+
+\end{document}
