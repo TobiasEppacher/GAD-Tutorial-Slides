@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.5.8)  16 MAY 2025 20:36
+=======
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.5.4)  12 MAY 2025 13:47
+>>>>>>> 09869b20731469abccab3ab6ea00a1c8f24efbd8
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -984,61 +988,93 @@ Package pdftex.def Info: tumlogo.pdf  used on input line 65.
 ]
 File: tumlogo.pdf Graphic file (type pdf)
 <use tumlogo.pdf>
-Package pdftex.def Info: tumlogo.pdf  used on input line 84.
+Package pdftex.def Info: tumlogo.pdf  used on input line 86.
 (pdftex.def)             Requested size: 91.69171pt x 13.0988pt.
 LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <10.95> not available
-(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 84.
+(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 86.
 LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <8> not available
-(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 84.
+(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 86.
 File: tumlogo.pdf Graphic file (type pdf)
 <use tumlogo.pdf>
-Package pdftex.def Info: tumlogo.pdf  used on input line 84.
+Package pdftex.def Info: tumlogo.pdf  used on input line 86.
 (pdftex.def)             Requested size: 91.69171pt x 13.0988pt.
  [3
 
 ]
 File: tumlogo.pdf Graphic file (type pdf)
 <use tumlogo.pdf>
+<<<<<<< HEAD
 Package pdftex.def Info: tumlogo.pdf  used on input line 117.
 (pdftex.def)             Requested size: 91.69171pt x 13.0988pt.
 File: tumlogo.pdf Graphic file (type pdf)
 <use tumlogo.pdf>
 Package pdftex.def Info: tumlogo.pdf  used on input line 117.
+=======
+Package pdftex.def Info: tumlogo.pdf  used on input line 120.
+(pdftex.def)             Requested size: 91.69171pt x 13.0988pt.
+File: tumlogo.pdf Graphic file (type pdf)
+<use tumlogo.pdf>
+Package pdftex.def Info: tumlogo.pdf  used on input line 120.
+>>>>>>> 09869b20731469abccab3ab6ea00a1c8f24efbd8
 (pdftex.def)             Requested size: 91.69171pt x 13.0988pt.
  [4
 
 ]
 File: tumlogo.pdf Graphic file (type pdf)
 <use tumlogo.pdf>
+<<<<<<< HEAD
 Package pdftex.def Info: tumlogo.pdf  used on input line 122.
 (pdftex.def)             Requested size: 91.69171pt x 13.0988pt.
 File: tumlogo.pdf Graphic file (type pdf)
 <use tumlogo.pdf>
 Package pdftex.def Info: tumlogo.pdf  used on input line 122.
+=======
+Package pdftex.def Info: tumlogo.pdf  used on input line 125.
+(pdftex.def)             Requested size: 91.69171pt x 13.0988pt.
+File: tumlogo.pdf Graphic file (type pdf)
+<use tumlogo.pdf>
+Package pdftex.def Info: tumlogo.pdf  used on input line 125.
+>>>>>>> 09869b20731469abccab3ab6ea00a1c8f24efbd8
 (pdftex.def)             Requested size: 91.69171pt x 13.0988pt.
  [5
 
 ]
 File: tumlogo.pdf Graphic file (type pdf)
 <use tumlogo.pdf>
+<<<<<<< HEAD
 Package pdftex.def Info: tumlogo.pdf  used on input line 127.
 (pdftex.def)             Requested size: 91.69171pt x 13.0988pt.
 File: tumlogo.pdf Graphic file (type pdf)
 <use tumlogo.pdf>
 Package pdftex.def Info: tumlogo.pdf  used on input line 127.
+=======
+Package pdftex.def Info: tumlogo.pdf  used on input line 130.
+(pdftex.def)             Requested size: 91.69171pt x 13.0988pt.
+File: tumlogo.pdf Graphic file (type pdf)
+<use tumlogo.pdf>
+Package pdftex.def Info: tumlogo.pdf  used on input line 130.
+>>>>>>> 09869b20731469abccab3ab6ea00a1c8f24efbd8
 (pdftex.def)             Requested size: 91.69171pt x 13.0988pt.
  [6
 
 ]
 File: tumlogo.pdf Graphic file (type pdf)
 <use tumlogo.pdf>
+<<<<<<< HEAD
 Package pdftex.def Info: tumlogo.pdf  used on input line 131.
+=======
+Package pdftex.def Info: tumlogo.pdf  used on input line 134.
+>>>>>>> 09869b20731469abccab3ab6ea00a1c8f24efbd8
 (pdftex.def)             Requested size: 91.69171pt x 13.0988pt.
 \openout4 = `tutorial03.vrb'.
 
 File: tumlogo.pdf Graphic file (type pdf)
 <use tumlogo.pdf>
+<<<<<<< HEAD
 Package pdftex.def Info: tumlogo.pdf  used on input line 145.
+=======
+Package pdftex.def Info: tumlogo.pdf  used on input line 148.
+>>>>>>> 09869b20731469abccab3ab6ea00a1c8f24efbd8
 (pdftex.def)             Requested size: 91.69171pt x 13.0988pt.
  (./tutorial03.vrb
 \openout5 = `tutorial03.pyg'.
@@ -1053,20 +1089,32 @@ LaTeX Font Info:    Font shape `OT1/pcr/m/it' in size <9> not available
 ))
 File: tumlogo.pdf Graphic file (type pdf)
 <use tumlogo.pdf>
+<<<<<<< HEAD
 Package pdftex.def Info: tumlogo.pdf  used on input line 145.
+=======
+Package pdftex.def Info: tumlogo.pdf  used on input line 148.
+>>>>>>> 09869b20731469abccab3ab6ea00a1c8f24efbd8
 (pdftex.def)             Requested size: 91.69171pt x 13.0988pt.
  [7
 
 ]
 File: tumlogo.pdf Graphic file (type pdf)
 <use tumlogo.pdf>
+<<<<<<< HEAD
 Package pdftex.def Info: tumlogo.pdf  used on input line 148.
+=======
+Package pdftex.def Info: tumlogo.pdf  used on input line 151.
+>>>>>>> 09869b20731469abccab3ab6ea00a1c8f24efbd8
 (pdftex.def)             Requested size: 91.69171pt x 13.0988pt.
 \openout4 = `tutorial03.vrb'.
 
 File: tumlogo.pdf Graphic file (type pdf)
 <use tumlogo.pdf>
+<<<<<<< HEAD
 Package pdftex.def Info: tumlogo.pdf  used on input line 158.
+=======
+Package pdftex.def Info: tumlogo.pdf  used on input line 161.
+>>>>>>> 09869b20731469abccab3ab6ea00a1c8f24efbd8
 (pdftex.def)             Requested size: 91.69171pt x 13.0988pt.
  (./tutorial03.vrb
 \openout6 = `tutorial03.pyg'.
@@ -1077,31 +1125,51 @@ Package pdftex.def Info: tumlogo.pdf  used on input line 158.
  (./_minted-tutorial03/E7C9C7185876B519326BA770DA82518653A0DC7610F041394E0AFCA83A1C2FBC.pygtex))
 File: tumlogo.pdf Graphic file (type pdf)
 <use tumlogo.pdf>
+<<<<<<< HEAD
 Package pdftex.def Info: tumlogo.pdf  used on input line 158.
+=======
+Package pdftex.def Info: tumlogo.pdf  used on input line 161.
+>>>>>>> 09869b20731469abccab3ab6ea00a1c8f24efbd8
 (pdftex.def)             Requested size: 91.69171pt x 13.0988pt.
  [8
 
 ]
 File: tumlogo.pdf Graphic file (type pdf)
 <use tumlogo.pdf>
+<<<<<<< HEAD
 Package pdftex.def Info: tumlogo.pdf  used on input line 165.
 (pdftex.def)             Requested size: 91.69171pt x 13.0988pt.
 File: tumlogo.pdf Graphic file (type pdf)
 <use tumlogo.pdf>
 Package pdftex.def Info: tumlogo.pdf  used on input line 165.
+=======
+Package pdftex.def Info: tumlogo.pdf  used on input line 168.
+(pdftex.def)             Requested size: 91.69171pt x 13.0988pt.
+File: tumlogo.pdf Graphic file (type pdf)
+<use tumlogo.pdf>
+Package pdftex.def Info: tumlogo.pdf  used on input line 168.
+>>>>>>> 09869b20731469abccab3ab6ea00a1c8f24efbd8
 (pdftex.def)             Requested size: 91.69171pt x 13.0988pt.
  [9
 
 ]
 File: tumlogo.pdf Graphic file (type pdf)
 <use tumlogo.pdf>
+<<<<<<< HEAD
 Package pdftex.def Info: tumlogo.pdf  used on input line 168.
+=======
+Package pdftex.def Info: tumlogo.pdf  used on input line 171.
+>>>>>>> 09869b20731469abccab3ab6ea00a1c8f24efbd8
 (pdftex.def)             Requested size: 91.69171pt x 13.0988pt.
 \openout4 = `tutorial03.vrb'.
 
 File: tumlogo.pdf Graphic file (type pdf)
 <use tumlogo.pdf>
+<<<<<<< HEAD
 Package pdftex.def Info: tumlogo.pdf  used on input line 178.
+=======
+Package pdftex.def Info: tumlogo.pdf  used on input line 181.
+>>>>>>> 09869b20731469abccab3ab6ea00a1c8f24efbd8
 (pdftex.def)             Requested size: 91.69171pt x 13.0988pt.
  (./tutorial03.vrb
 \openout5 = `tutorial03.pyg'.
@@ -1109,20 +1177,32 @@ Package pdftex.def Info: tumlogo.pdf  used on input line 178.
  (./_minted-tutorial03/B857AE8741CD0FC5461DDAD2F9E3F17353A0DC7610F041394E0AFCA83A1C2FBC.pygtex))
 File: tumlogo.pdf Graphic file (type pdf)
 <use tumlogo.pdf>
+<<<<<<< HEAD
 Package pdftex.def Info: tumlogo.pdf  used on input line 178.
+=======
+Package pdftex.def Info: tumlogo.pdf  used on input line 181.
+>>>>>>> 09869b20731469abccab3ab6ea00a1c8f24efbd8
 (pdftex.def)             Requested size: 91.69171pt x 13.0988pt.
  [10
 
 ]
 File: tumlogo.pdf Graphic file (type pdf)
 <use tumlogo.pdf>
+<<<<<<< HEAD
 Package pdftex.def Info: tumlogo.pdf  used on input line 181.
+=======
+Package pdftex.def Info: tumlogo.pdf  used on input line 184.
+>>>>>>> 09869b20731469abccab3ab6ea00a1c8f24efbd8
 (pdftex.def)             Requested size: 91.69171pt x 13.0988pt.
 \openout4 = `tutorial03.vrb'.
 
 File: tumlogo.pdf Graphic file (type pdf)
 <use tumlogo.pdf>
+<<<<<<< HEAD
 Package pdftex.def Info: tumlogo.pdf  used on input line 202.
+=======
+Package pdftex.def Info: tumlogo.pdf  used on input line 205.
+>>>>>>> 09869b20731469abccab3ab6ea00a1c8f24efbd8
 (pdftex.def)             Requested size: 91.69171pt x 13.0988pt.
  (./tutorial03.vrb
 \openout5 = `tutorial03.pyg'.
@@ -1133,66 +1213,110 @@ LaTeX Font Info:    Font shape `OT1/pcr/m/it' in size <8> not available
 ))
 File: tumlogo.pdf Graphic file (type pdf)
 <use tumlogo.pdf>
+<<<<<<< HEAD
 Package pdftex.def Info: tumlogo.pdf  used on input line 202.
+=======
+Package pdftex.def Info: tumlogo.pdf  used on input line 205.
+>>>>>>> 09869b20731469abccab3ab6ea00a1c8f24efbd8
 (pdftex.def)             Requested size: 91.69171pt x 13.0988pt.
  [11
 
 ]
 File: tumlogo.pdf Graphic file (type pdf)
 <use tumlogo.pdf>
+<<<<<<< HEAD
 Package pdftex.def Info: tumlogo.pdf  used on input line 207.
 (pdftex.def)             Requested size: 91.69171pt x 13.0988pt.
 File: tumlogo.pdf Graphic file (type pdf)
 <use tumlogo.pdf>
 Package pdftex.def Info: tumlogo.pdf  used on input line 207.
+=======
+Package pdftex.def Info: tumlogo.pdf  used on input line 210.
+(pdftex.def)             Requested size: 91.69171pt x 13.0988pt.
+File: tumlogo.pdf Graphic file (type pdf)
+<use tumlogo.pdf>
+Package pdftex.def Info: tumlogo.pdf  used on input line 210.
+>>>>>>> 09869b20731469abccab3ab6ea00a1c8f24efbd8
 (pdftex.def)             Requested size: 91.69171pt x 13.0988pt.
  [12
 
 ]
 File: tumlogo.pdf Graphic file (type pdf)
 <use tumlogo.pdf>
+<<<<<<< HEAD
 Package pdftex.def Info: tumlogo.pdf  used on input line 212.
 (pdftex.def)             Requested size: 91.69171pt x 13.0988pt.
 File: tumlogo.pdf Graphic file (type pdf)
 <use tumlogo.pdf>
 Package pdftex.def Info: tumlogo.pdf  used on input line 212.
+=======
+Package pdftex.def Info: tumlogo.pdf  used on input line 215.
+(pdftex.def)             Requested size: 91.69171pt x 13.0988pt.
+File: tumlogo.pdf Graphic file (type pdf)
+<use tumlogo.pdf>
+Package pdftex.def Info: tumlogo.pdf  used on input line 215.
+>>>>>>> 09869b20731469abccab3ab6ea00a1c8f24efbd8
 (pdftex.def)             Requested size: 91.69171pt x 13.0988pt.
  [13
 
 ]
 File: tumlogo.pdf Graphic file (type pdf)
 <use tumlogo.pdf>
+<<<<<<< HEAD
 Package pdftex.def Info: tumlogo.pdf  used on input line 217.
+=======
+Package pdftex.def Info: tumlogo.pdf  used on input line 220.
+>>>>>>> 09869b20731469abccab3ab6ea00a1c8f24efbd8
 (pdftex.def)             Requested size: 91.69171pt x 13.0988pt.
 \openout4 = `tutorial03.vrb'.
 
 File: tumlogo.pdf Graphic file (type pdf)
 <use tumlogo.pdf>
+<<<<<<< HEAD
 Package pdftex.def Info: tumlogo.pdf  used on input line 243.
+=======
+Package pdftex.def Info: tumlogo.pdf  used on input line 246.
+>>>>>>> 09869b20731469abccab3ab6ea00a1c8f24efbd8
 (pdftex.def)             Requested size: 91.69171pt x 13.0988pt.
  (./tutorial03.vrb
 \openout5 = `tutorial03.pyg'.
 
  (./_minted-tutorial03/5DDE369E930664B281261D188B4F8548451BA91702DDB8DCEDB49B2FAFD3C5A9.pygtex))
+<<<<<<< HEAD
 Overfull \vbox (0.7172pt too high) detected at line 243
+=======
+Overfull \vbox (0.7172pt too high) detected at line 246
+>>>>>>> 09869b20731469abccab3ab6ea00a1c8f24efbd8
  []
 
 File: tumlogo.pdf Graphic file (type pdf)
 <use tumlogo.pdf>
+<<<<<<< HEAD
 Package pdftex.def Info: tumlogo.pdf  used on input line 243.
+=======
+Package pdftex.def Info: tumlogo.pdf  used on input line 246.
+>>>>>>> 09869b20731469abccab3ab6ea00a1c8f24efbd8
 (pdftex.def)             Requested size: 91.69171pt x 13.0988pt.
 [14
 
 ]
 File: tumlogo.pdf Graphic file (type pdf)
 <use tumlogo.pdf>
+<<<<<<< HEAD
 Package pdftex.def Info: tumlogo.pdf  used on input line 246.
+=======
+Package pdftex.def Info: tumlogo.pdf  used on input line 249.
+>>>>>>> 09869b20731469abccab3ab6ea00a1c8f24efbd8
 (pdftex.def)             Requested size: 91.69171pt x 13.0988pt.
 \openout4 = `tutorial03.vrb'.
 
 File: tumlogo.pdf Graphic file (type pdf)
 <use tumlogo.pdf>
+<<<<<<< HEAD
 Package pdftex.def Info: tumlogo.pdf  used on input line 270.
+=======
+Package pdftex.def Info: tumlogo.pdf  used on input line 273.
+>>>>>>> 09869b20731469abccab3ab6ea00a1c8f24efbd8
 (pdftex.def)             Requested size: 91.69171pt x 13.0988pt.
  (./tutorial03.vrb
 \openout5 = `tutorial03.pyg'.
@@ -1200,20 +1324,32 @@ Package pdftex.def Info: tumlogo.pdf  used on input line 270.
  (./_minted-tutorial03/BED9069419A124CF5C71F8F565E5E35B451BA91702DDB8DCEDB49B2FAFD3C5A9.pygtex))
 File: tumlogo.pdf Graphic file (type pdf)
 <use tumlogo.pdf>
+<<<<<<< HEAD
 Package pdftex.def Info: tumlogo.pdf  used on input line 270.
+=======
+Package pdftex.def Info: tumlogo.pdf  used on input line 273.
+>>>>>>> 09869b20731469abccab3ab6ea00a1c8f24efbd8
 (pdftex.def)             Requested size: 91.69171pt x 13.0988pt.
  [15
 
 ]
 File: tumlogo.pdf Graphic file (type pdf)
 <use tumlogo.pdf>
+<<<<<<< HEAD
 Package pdftex.def Info: tumlogo.pdf  used on input line 273.
+=======
+Package pdftex.def Info: tumlogo.pdf  used on input line 276.
+>>>>>>> 09869b20731469abccab3ab6ea00a1c8f24efbd8
 (pdftex.def)             Requested size: 91.69171pt x 13.0988pt.
 \openout4 = `tutorial03.vrb'.
 
 File: tumlogo.pdf Graphic file (type pdf)
 <use tumlogo.pdf>
+<<<<<<< HEAD
 Package pdftex.def Info: tumlogo.pdf  used on input line 297.
+=======
+Package pdftex.def Info: tumlogo.pdf  used on input line 300.
+>>>>>>> 09869b20731469abccab3ab6ea00a1c8f24efbd8
 (pdftex.def)             Requested size: 91.69171pt x 13.0988pt.
  (./tutorial03.vrb
 \openout5 = `tutorial03.pyg'.
@@ -1221,20 +1357,32 @@ Package pdftex.def Info: tumlogo.pdf  used on input line 297.
  (./_minted-tutorial03/BAC873D75AB054F00221296EB5070EC4451BA91702DDB8DCEDB49B2FAFD3C5A9.pygtex))
 File: tumlogo.pdf Graphic file (type pdf)
 <use tumlogo.pdf>
+<<<<<<< HEAD
 Package pdftex.def Info: tumlogo.pdf  used on input line 297.
+=======
+Package pdftex.def Info: tumlogo.pdf  used on input line 300.
+>>>>>>> 09869b20731469abccab3ab6ea00a1c8f24efbd8
 (pdftex.def)             Requested size: 91.69171pt x 13.0988pt.
  [16
 
 ]
 File: tumlogo.pdf Graphic file (type pdf)
 <use tumlogo.pdf>
+<<<<<<< HEAD
 Package pdftex.def Info: tumlogo.pdf  used on input line 300.
+=======
+Package pdftex.def Info: tumlogo.pdf  used on input line 303.
+>>>>>>> 09869b20731469abccab3ab6ea00a1c8f24efbd8
 (pdftex.def)             Requested size: 91.69171pt x 13.0988pt.
 \openout4 = `tutorial03.vrb'.
 
 File: tumlogo.pdf Graphic file (type pdf)
 <use tumlogo.pdf>
+<<<<<<< HEAD
 Package pdftex.def Info: tumlogo.pdf  used on input line 324.
+=======
+Package pdftex.def Info: tumlogo.pdf  used on input line 327.
+>>>>>>> 09869b20731469abccab3ab6ea00a1c8f24efbd8
 (pdftex.def)             Requested size: 91.69171pt x 13.0988pt.
  (./tutorial03.vrb
 \openout5 = `tutorial03.pyg'.
@@ -1242,14 +1390,22 @@ Package pdftex.def Info: tumlogo.pdf  used on input line 324.
  (./_minted-tutorial03/61E7DE5DF628174C223F2819CE0C23CB451BA91702DDB8DCEDB49B2FAFD3C5A9.pygtex))
 File: tumlogo.pdf Graphic file (type pdf)
 <use tumlogo.pdf>
+<<<<<<< HEAD
 Package pdftex.def Info: tumlogo.pdf  used on input line 324.
+=======
+Package pdftex.def Info: tumlogo.pdf  used on input line 327.
+>>>>>>> 09869b20731469abccab3ab6ea00a1c8f24efbd8
 (pdftex.def)             Requested size: 91.69171pt x 13.0988pt.
  [17
 
 ]
 File: tumlogo.pdf Graphic file (type pdf)
 <use tumlogo.pdf>
+<<<<<<< HEAD
 Package pdftex.def Info: tumlogo.pdf  used on input line 339.
+=======
+Package pdftex.def Info: tumlogo.pdf  used on input line 342.
+>>>>>>> 09869b20731469abccab3ab6ea00a1c8f24efbd8
 (pdftex.def)             Requested size: 91.69171pt x 13.0988pt.
 \openout6 = `tutorial03.pyg'.
 
@@ -1262,41 +1418,62 @@ Package pdftex.def Info: tumlogo.pdf  used on input line 339.
  (./_minted-tutorial03/1C2766C0203CA8489F178B9955964C54451BA91702DDB8DCEDB49B2FAFD3C5A9.pygtex)
 File: tumlogo.pdf Graphic file (type pdf)
 <use tumlogo.pdf>
+<<<<<<< HEAD
 Package pdftex.def Info: tumlogo.pdf  used on input line 339.
+=======
+Package pdftex.def Info: tumlogo.pdf  used on input line 342.
+>>>>>>> 09869b20731469abccab3ab6ea00a1c8f24efbd8
 (pdftex.def)             Requested size: 91.69171pt x 13.0988pt.
  [18
 
 ]
 File: tumlogo.pdf Graphic file (type pdf)
 <use tumlogo.pdf>
+<<<<<<< HEAD
 Package pdftex.def Info: tumlogo.pdf  used on input line 344.
+=======
+Package pdftex.def Info: tumlogo.pdf  used on input line 347.
+>>>>>>> 09869b20731469abccab3ab6ea00a1c8f24efbd8
 (pdftex.def)             Requested size: 91.69171pt x 13.0988pt.
 \openout6 = `tutorial03.pyg'.
 
  (./_minted-tutorial03/1C2766C0203CA8489F178B9955964C54451BA91702DDB8DCEDB49B2FAFD3C5A9.pygtex)
 File: tumlogo.pdf Graphic file (type pdf)
 <use tumlogo.pdf>
+<<<<<<< HEAD
 Package pdftex.def Info: tumlogo.pdf  used on input line 344.
+=======
+Package pdftex.def Info: tumlogo.pdf  used on input line 347.
+>>>>>>> 09869b20731469abccab3ab6ea00a1c8f24efbd8
 (pdftex.def)             Requested size: 91.69171pt x 13.0988pt.
  [19
 
 ]
 File: tumlogo.pdf Graphic file (type pdf)
 <use tumlogo.pdf>
+<<<<<<< HEAD
 Package pdftex.def Info: tumlogo.pdf  used on input line 349.
+=======
+Package pdftex.def Info: tumlogo.pdf  used on input line 352.
+>>>>>>> 09869b20731469abccab3ab6ea00a1c8f24efbd8
 (pdftex.def)             Requested size: 91.69171pt x 13.0988pt.
 \openout6 = `tutorial03.pyg'.
 
  (./_minted-tutorial03/1C2766C0203CA8489F178B9955964C54451BA91702DDB8DCEDB49B2FAFD3C5A9.pygtex)
 File: tumlogo.pdf Graphic file (type pdf)
 <use tumlogo.pdf>
+<<<<<<< HEAD
 Package pdftex.def Info: tumlogo.pdf  used on input line 349.
+=======
+Package pdftex.def Info: tumlogo.pdf  used on input line 352.
+>>>>>>> 09869b20731469abccab3ab6ea00a1c8f24efbd8
 (pdftex.def)             Requested size: 91.69171pt x 13.0988pt.
  [20
 
 ]
 File: tumlogo.pdf Graphic file (type pdf)
 <use tumlogo.pdf>
+<<<<<<< HEAD
 Package pdftex.def Info: tumlogo.pdf  used on input line 365.
 (pdftex.def)             Requested size: 91.69171pt x 13.0988pt.
 LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <10> not available
@@ -1306,28 +1483,55 @@ LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <7> not available
 File: tumlogo.pdf Graphic file (type pdf)
 <use tumlogo.pdf>
 Package pdftex.def Info: tumlogo.pdf  used on input line 365.
+=======
+Package pdftex.def Info: tumlogo.pdf  used on input line 368.
+(pdftex.def)             Requested size: 91.69171pt x 13.0988pt.
+LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <10> not available
+(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 368.
+LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <7> not available
+(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 368.
+File: tumlogo.pdf Graphic file (type pdf)
+<use tumlogo.pdf>
+Package pdftex.def Info: tumlogo.pdf  used on input line 368.
+>>>>>>> 09869b20731469abccab3ab6ea00a1c8f24efbd8
 (pdftex.def)             Requested size: 91.69171pt x 13.0988pt.
  [21
 
 ]
 File: tumlogo.pdf Graphic file (type pdf)
 <use tumlogo.pdf>
+<<<<<<< HEAD
 Package pdftex.def Info: tumlogo.pdf  used on input line 374.
 (pdftex.def)             Requested size: 91.69171pt x 13.0988pt.
 File: tumlogo.pdf Graphic file (type pdf)
 <use tumlogo.pdf>
 Package pdftex.def Info: tumlogo.pdf  used on input line 374.
+=======
+Package pdftex.def Info: tumlogo.pdf  used on input line 377.
+(pdftex.def)             Requested size: 91.69171pt x 13.0988pt.
+File: tumlogo.pdf Graphic file (type pdf)
+<use tumlogo.pdf>
+Package pdftex.def Info: tumlogo.pdf  used on input line 377.
+>>>>>>> 09869b20731469abccab3ab6ea00a1c8f24efbd8
 (pdftex.def)             Requested size: 91.69171pt x 13.0988pt.
  [22
 
 ]
 File: tumlogo.pdf Graphic file (type pdf)
 <use tumlogo.pdf>
+<<<<<<< HEAD
 Package pdftex.def Info: tumlogo.pdf  used on input line 390.
 (pdftex.def)             Requested size: 91.69171pt x 13.0988pt.
 File: tumlogo.pdf Graphic file (type pdf)
 <use tumlogo.pdf>
 Package pdftex.def Info: tumlogo.pdf  used on input line 390.
+=======
+Package pdftex.def Info: tumlogo.pdf  used on input line 393.
+(pdftex.def)             Requested size: 91.69171pt x 13.0988pt.
+File: tumlogo.pdf Graphic file (type pdf)
+<use tumlogo.pdf>
+Package pdftex.def Info: tumlogo.pdf  used on input line 393.
+>>>>>>> 09869b20731469abccab3ab6ea00a1c8f24efbd8
 (pdftex.def)             Requested size: 91.69171pt x 13.0988pt.
  [23
 
@@ -1360,7 +1564,11 @@ Here is how much of TeX's memory you used:
  1141 hyphenation exceptions out of 8191
  128i,23n,123p,1066b,643s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrro8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb>
+<<<<<<< HEAD
 Output written on tutorial03.pdf (23 pages, 192543 bytes).
+=======
+Output written on tutorial03.pdf (23 pages, 193019 bytes).
+>>>>>>> 09869b20731469abccab3ab6ea00a1c8f24efbd8
 PDF statistics:
  734 PDF objects out of 1000 (max. 8388607)
  661 compressed objects within 7 object streams
