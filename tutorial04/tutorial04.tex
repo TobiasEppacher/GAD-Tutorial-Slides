@@ -1,0 +1,302 @@
+\documentclass{beamer}
+\mode<presentation>
+{
+  \usetheme{ldv}
+  \setbeamercovered{transparent}
+}
+
+% Uncomment this if you're giving a presentation in german...
+\usepackage[ngerman]{babel}
+
+% ...and rename this to "Folie"
+\newcommand{\slidenomenclature}{Folie}
+
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{times}
+\usepackage{graphicx}
+\usepackage{fancyvrb}
+\usepackage{array}
+\usepackage{colortbl}
+\usepackage{tabularx}
+
+% Uncomment me when you need to insert code
+\usepackage{color}
+\usepackage{listings}
+\usepackage{minted}
+\usepackage{algpseudocode}
+% End Code
+
+\usepackage{datetime}
+\usepackage{tikz}
+
+\usetikzlibrary{calc}
+\usetikzlibrary{shapes.geometric}
+\usetikzlibrary{decorations.pathreplacing}
+
+% Uncomment me when you need video or sound
+% \usepackage{multimedia}
+% \usepackage{hyperref}
+% End video
+
+% Header
+\newcommand{\zwischentitel}{Woche 4}
+\newcommand{\leitthema}{Tobias Eppacher}
+\newcommand{\presdatum}{\formatdate{19}{5}{2025}}
+% End Header
+
+% Titlepage
+\title{Grundlagen: Algorithmen und Datenstrukturen}
+\author{Tobias Eppacher}
+\date{\presdatum}
+\institute{School of Computation, Information and Technology}
+\subtitle{Woche 4}
+% End Titlepage
+
+
+% Slides
+\begin{document}
+
+% 1. Slide: Titlepage
+\begin{frame}
+	\titlepage{}
+\end{frame}
+
+% 2. Slide: TOC
+\begin{frame}
+	\frametitle{Table of contents}
+	\tableofcontents[subsectionstyle=hide]
+\end{frame}
+
+% Further Slides
+\section{Aufgaben}
+
+\subsection{Sortierverfahren}
+\begin{frame}
+	\frametitle{Aufgabe 4.1 - Sortierverfahren}
+	Zahlenfolge: $[523, 126, 67, 1, 500, 34, 21, 229, 9, 123, 13]$
+
+	\smallskip
+
+	\textbf{(a) Mergesort:} \\
+	Ein Zwischenschritt je Aufteilen und Verschmelzen (hier ca. 8 Schritte). \\
+	Teilen ungerader Länge $\rightarrow$ Linke Seite eins mehr.
+
+	\smallskip
+
+	\textbf{(b) Quicksort:} \\
+	Wie in der Vorlesung $\rightarrow$ letztes Element $=$ Pivot. \\
+	Machen Sie kenntlich welches Pivot in jedem Schritt verwendet wird und geben
+	Sie das Array nach jedem Umsortieren an.
+	Sortierschritte auf zwei nicht überlagernden Abschnitten der Zahlenfolge
+	können im selben Schritt dargestellt werden. \\
+	Bei Teilsequenzen der Länge 2 kann direkt ohne Rekursion getauscht werden.
+
+	\smallskip
+
+	\textbf{(c)} Welches Sortierverfahren ist im Worst- bzw. Averagecase schneller?
+\end{frame}
+
+\begin{frame}[t]
+	\frametitle{Aufgabe 4.1 - Sortierverfahren (a)}
+	\begin{tikzpicture}
+		\foreach [count=\i from 0] \n in {523,126,67,1,500,34,21,229,9,123,13} {
+				\node [draw, minimum size=0.7cm, font=\scriptsize] at (\i,0) {\n};
+			}
+	\end{tikzpicture}
+\end{frame}
+
+\begin{frame}[t]
+	\frametitle{Aufgabe 4.1 - Sortierverfahren (b)}
+	\begin{tikzpicture}
+		\foreach [count=\i from 0] \n in {523,126,67,1,500,34,21,229,9,123,13} {
+				\node [draw, minimum size=0.7cm, font=\scriptsize] at (\i,0) {\n};
+			}
+	\end{tikzpicture}
+\end{frame}
+
+\begin{frame}[t]
+	\frametitle{Aufgabe 4.1 - Sortierverfahren (c)}
+	Welches Sortierverfahren ist im Worst- bzw. Averagecase schneller?
+\end{frame}
+
+\subsection{Bankkonto Tutorial}
+\begin{frame}
+	\frametitle{Aufgabe 4.2 - Bankkonto Tutorial}
+	\begin{columns}
+		\begin{column}{0.3\textwidth}
+
+			\begin{tikzpicture}
+				% Paths, nodes and wires:
+				\node[shape=ellipse, draw, line width=1pt, inner sep=0, minimum width=2.715cm, minimum height=4.215cm] at (6, 4.75){};
+				\node[shape=circle, draw, line width=1pt, inner sep=0, minimum width=0.465cm](Ellipse1) at (5.875, 6.125){} node[anchor=center] at (Ellipse1.center){$\sigma_a$};
+				\node[shape=circle, draw, line width=1pt, inner sep=0, minimum width=0.465cm](Ellipse2) at (5.302, 4.948){} node[anchor=center] at (Ellipse2.center){$\sigma_b$};
+				\node[shape=circle, draw, line width=1pt, inner sep=0, minimum width=0.465cm](Ellipse3) at (6.698, 4.198){} node[anchor=center] at (Ellipse3.center){$\sigma_c$};
+				\node[shape=circle, draw, line width=1pt, inner sep=0, minimum width=0.465cm](Ellipse4) at (5.698, 3.302){} node[anchor=center] at (Ellipse4.center){$\sigma_d$};
+				\node[shape=rectangle, inner sep=0, minimum width=0.965cm, minimum height=0.465cm](Rect1) at (6, 7.25){} node[anchor=center] at (Rect1.center){$S$};
+			\end{tikzpicture}
+		\end{column}
+		\begin{column}{0.7\textwidth}
+			Menge von Operationen: $S$
+
+			\medskip
+
+			(Obere Schranke für) Laufzeit von Operation $\sigma \in S$: $T(\sigma)$
+
+			\medskip
+
+			(Obere Schranke für) Laufzeit einer Folge von $m$ Operationen:
+			$T(\sigma_1, \sigma_2, \dots, \sigma_m) := \sum_{i=1}^{m} T(\sigma_i)$
+
+			\bigskip
+
+			\textbf{Ziel der Amortisierten Analyse} \\
+			\smallskip
+			Möglichst genaue obere Schranke für $T(\sigma_1, \sigma_2, \dots, \sigma_m)$ finden
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}[t]
+	\frametitle{Aufgabe 4.2 - Bankkonto Tutorial}
+
+	\textbf{Bankkonto Methode}
+
+	\bigskip
+
+	\textbf{Idee:} Verteile Laufzeit von langsamen auf schnellere Operationen
+
+	\medskip
+
+	$\Rightarrow$ Bessere Abschätzung der Laufzeit
+\end{frame}
+
+\begin{frame}[t]
+	\frametitle{Aufgabe 4.2 - Bankkonto Tutorial}
+
+	\textbf{Bankkonto Methode}
+
+	\bigskip
+
+	\textbf{Idee:} Verteile Laufzeit von langsamen auf schnellere Operationen
+
+	\medskip
+
+	$\Rightarrow$ Bessere Abschätzung der Laufzeit
+
+	\bigskip
+
+	\begin{tikzpicture}[scale=0.7, transform shape]
+		% Paths, nodes and wires:
+		\node[shape=rectangle, draw=red, line width=1pt, inner sep=0, minimum width=1cm, minimum height=3cm]
+		(Rect1) at (0, 4){} node[anchor=center] at (Rect1.center){$\sigma_{n+1}$};
+		\node[shape=rectangle, draw, line width=1pt, inner sep=0, minimum width=1cm, minimum height=1cm]
+		(Rect2) at (0, 2){} node[anchor=center] at (Rect2.center){$\sigma_n$};
+		\node[shape=rectangle, draw, line width=1pt, inner sep=0, minimum width=1cm, minimum height=1cm]
+		(Rect3) at (0, 1){} node[anchor=center] at (Rect3.center){$\dots$};
+		\node[shape=rectangle, draw, line width=1pt, inner sep=0, minimum width=1cm, minimum height=1cm]
+		(Rect4) at (0, 0){} node[anchor=center] at (Rect4.center){$\sigma_1$};
+
+		\node[shape=rectangle, draw, line width=1pt, inner sep=0, minimum width=1cm, minimum height=1cm]
+		(Rect5) at (4, 0){} node[anchor=center] at (Rect5.center){$\sigma_1$};
+		\node[shape=rectangle, draw=red, line width=1pt, inner sep=0, minimum width=1cm, minimum height=1cm]
+		(Rect6) at (4, 1){} node[anchor=center] at (Rect6.center){$1$};
+		\node[shape=rectangle, draw, line width=1pt, inner sep=0, minimum width=1cm, minimum height=1cm]
+		(Rect7) at (6, 0){} node[anchor=center] at (Rect7.center){$\sigma_2$};
+		\node[shape=rectangle, draw=red, line width=1pt, inner sep=0, minimum width=1cm, minimum height=1cm]
+		(Rect8) at (6, 1){} node[anchor=center] at (Rect8.center){$1$};
+		\node[shape=rectangle, draw, line width=1pt, inner sep=0, minimum width=1cm, minimum height=1cm]
+		(Rect9) at (8, 0){} node[anchor=center] at (Rect9.center){$\dots$};
+		\node[shape=rectangle, draw=red, line width=1pt, inner sep=0, minimum width=1cm, minimum height=1cm]
+		(Rect10) at (8, 1){} node[anchor=center] at (Rect10.center){$\dots$};
+		\node[shape=rectangle, draw, line width=1pt, inner sep=0, minimum width=1cm, minimum height=1cm]
+		(Rect11) at (10, 0){} node[anchor=center] at (Rect11.center){$\sigma_n$};
+		\node[shape=rectangle, draw=red, line width=1pt, inner sep=0, minimum width=1cm, minimum height=1cm]
+		(Rect12) at (10, 1){} node[anchor=center] at (Rect12.center){$1$};
+
+		\draw[decorate, decoration={brace, mirror, amplitude=5pt}, thick]
+		(-0.7,5.5) -- (-0.7,2.5) node[midway, xshift=-1.5cm] {\footnotesize\shortstack{1 Operation \\ Laufzeit $n$}};
+		\draw[decorate, decoration={brace, mirror, amplitude=5pt}, thick]
+		(-0.7,2.5) -- (-0.7,-0.5) node[midway, xshift=-1.5cm] {\footnotesize\shortstack{$n$ Operationen \\ mit Laufzeit $1$}};
+
+		\draw[->, thick, red] (0.6,4) -- (3.9, 1.6);
+		\draw[->, thick, red] (0.6,4) -- (5.9, 1.6);
+		\draw[->, thick, red] (0.6,4) -- (7.9, 1.6);
+		\draw[->, thick, red] (0.6,4) -- (9.9, 1.6);
+	\end{tikzpicture}
+\end{frame}
+
+\begin{frame}[t]
+	\frametitle{Aufgabe 4.2 - Bankkonto Tutorial}
+
+	\begin{itemize}
+		\item Schnelle Operationen können Laufzeit übernehmen \\
+		      $\Rightarrow$ Zahlen Tokens auf Konto ein ("nicht verwendete Zeit")
+		\item Mehrere schnelle Operationen sparen Tokens an
+		\item Folgende langsame Operation kann Tokens abheben \\
+		      $\Rightarrow$ Gesparte Zeit wird aufgebraucht
+	\end{itemize}
+
+	\bigskip
+
+	Wir definieren die Funktion $\Delta: S \to \mathbb{R}$ die bestimmt, wieviele Tokens eine Operation einzahlt oder abhebt. \\
+	Diese muss zwei Eigenschaften erfüllen:
+
+	\medskip
+
+	\begin{enumerate}
+		\item Für legale Operationsfolgen: $\sum_{i=1}^{m} \Delta(\sigma_i) \geq 0$ \\
+		      (Konto darf nie negativ werden)
+		\item $\Delta$ ist möglichst gut gewählt. \textit{(Dazu gleich mehr)}
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}
+
+\end{frame}
+
+\section{E-Aufgaben}
+\begin{frame}
+	\frametitle{E-Aufgaben}
+	\begin{itemize}
+		\item Aufgabe 3.5 - Noch mehr Spaß mit $\mathcal{O}$ \\
+		      \begin{itemize}
+			      \item Gute Überprüfung für Verständnis von $\mathcal{O}$
+			      \item Kleiner Induktionsbeweis
+		      \end{itemize}
+		\item Aufgabe 3.6 - Zufallsvariablen-Caching
+		      \begin{itemize}
+			      \item Übung zu Zufallsvariablen
+		      \end{itemize}
+	\end{itemize}
+\end{frame}
+
+\section{Hausaufgaben}
+\begin{frame}
+	\frametitle{Hausaufgaben}
+	\begin{itemize}
+		\item Hausaufgabe 3 - Dynamisches Array \\
+		      (Deadline: 21.05.2025)
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\textbf{Fragen?}
+	\begin{itemize}
+		\item Nach Übung gerne bei mir melden
+		\item Tutoriumschannel oder DM an mich auf Zulip
+		\item Vorlesungschannels von GAD auf Zulip (insbesondere bei Hausaufgaben)
+	\end{itemize}
+
+	\medskip
+	\textbf{Feedback oder Verbesserungsvorschläge?} \\
+	Gerne nach dem Tutorium mit mir quatschen oder DM auf Zulip
+
+	\medskip
+	\textbf{Bis nächste Woche!}
+\end{frame}
+
+% End Slides
+
+\end{document}
