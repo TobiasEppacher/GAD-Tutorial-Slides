@@ -253,21 +253,188 @@
 \end{frame}
 
 \begin{frame}
+	\frametitle{Aufgabe 4.2 - Bankkonto Tutorial}
 
+	\textbf{Amortisierte Laufzeit}
+
+	\medskip
+
+	Für eine Operation: \\
+	$$A(\sigma) := T(\sigma) + \Delta(\sigma)$$
+
+	Für eine Folge von Operationen: \\
+	$$A(\sigma_1,\dots\sigma_m) = \sum_{i=1}^{m} A(\sigma_i) = \sum_{i=1}^{m} T(\sigma) + \Delta(\sigma)$$
+	$$= T(\sigma_1,\dots\sigma_m) + \underbrace{\sum_{i=1}^{m} \Delta{(\sigma_i)}}_{\geq 0} \geq T(\sigma_1,\dots\sigma_m)$$
+
+	$\Rightarrow$ Amortisierte Laufzeit ist eine \textit{obere Schranke} für die tatsächliche Laufzeit
+\end{frame}
+
+\begin{frame}[t]
+	\frametitle{Aufgabe 4.2 - Bankkonto Tutorial}
+
+	\textbf{Wie wählt man $\Delta$?}
+
+	\medskip
+
+	Häufig sinnvoll: \\
+	Amortisierte Laufzeit der schlechtesten Operation möglichst niedrig halten
+	(i.e. minimiere $\max_{\sigma \in S}(A(\sigma))$)
+
+	\bigskip
+
+	\textbf{Beispiel:}
+
+	\begin{itemize}
+		\item Operationsfolge: $S = \{ \sigma_1, \sigma_2, \dots, \sigma_m \}$
+		\item Schema mit $\max_{\sigma \in S}(A(\sigma))$ möglichst klein, gefunden
+	\end{itemize}
+
+	\medskip
+
+	$\Rightarrow$ Asymptotische Worst-Case Laufzeit ist in
+	$$\mathcal{O}(m \cdot \max_{\sigma \in S}(A(\sigma)))$$
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Aufgabe 4.3 - Amortisation}
+
+	\textbf{Der Zähler}
+
+	\medskip
+
+	Wir starten einen Zähler mit $0$ und haben eine Folge von $m$ Inkrement-Operationen.
+	(D.h. Operation $\sigma_k$: Zähler $k-1 \rightarrow k$)
+
+	\medskip
+
+	Zähler arbeitet in Dezimalschreibweise (Ziffern $0-9$ pro Stelle)
+
+	\medskip
+
+	Änderung einer Stelle hat Laufzeit 1
+
+	\bigskip
+
+	\textbf{Beispiele:}
+
+	\medskip
+
+	$\sigma_{134}: \text{Zähler } 13\mathcolor{blue}{3} \rightarrow 13\mathcolor{blue}{4} \implies$ Laufzeit 1 \\
+	$\sigma_{240}: \text{Zähler } 2\mathcolor{blue}{3}\mathcolor{red}{9} \rightarrow 2\mathcolor{blue}{4}\mathcolor{red}{0} \implies$ Laufzeit 2 \\
+	$\sigma_{9999}: \text{Zähler } \mathcolor{blue}{0}\mathcolor{red}{9999} \rightarrow \mathcolor{blue}{1}\mathcolor{red}{0000} \implies$ Laufzeit 5
+\end{frame}
+
+\begin{frame}
+	\frametitle{Aufgabe 4.3 - Amortisation}
+
+	\hangindent=1.5em\hangafter=1
+	\textbf{(a)} Definieren Sie ein zulässiges Amortisationsschema $\Delta: {\sigma_1, \sigma_2, \dots} \to \mathbb{R}$ der Bankkonto-Methode, sodass für jede Inkrementoperation $\sigma_k$ gilt:
+	$$A(\sigma_k) = T(\sigma_k) + \Delta(\sigma_k) = \frac{10}{9}$$
+
+	\smallskip
+
+	\hangindent=1.5em\hangafter=1
+	\textbf{(b)} Zeigen Sie, dass Ihr Amortisationsschema zulässig ist, indem Sie nachweisen, dass das
+	Tokenkonto stets nichtnegativ ist.
+
+	\bigskip
+
+	Verwenden Sie folgende Definitionen:
+	\begin{align*}
+		S_{x \rightarrow x+1}(\sigma_k) \quad & \text{\#Stellen die } \sigma_k \text{ von } x \text{ zu } x+1 \text{ setzt} \\
+		S_{9 \rightarrow 0}(\sigma_k) \quad   & \text{\#Stellen die } \sigma_k \text{ von } 9 \text{ zu } 0 \text{ setzt}
+	\end{align*}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Aufgabe 4.3 - Amortisation (a)}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Aufgabe 4.3 - Amortisation (b)}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Aufgabe 4.4 - Dynamisches Array}
+
+	\begin{tabular}{>{$}l<{$} @{${}\quad\;$} p{\textwidth}}
+		\alpha > \beta > 0 & \text{Wachstums-/Verkleinerungs-Faktoren } ($\alpha, \beta \in \mathbb{N}$) \\
+		n                  & \text{Aktuelle Anzahl der Elemente im Array}                                \\
+		w                  & \text{Größe des Arrays}
+	\end{tabular}
+
+	\medskip
+
+	\textbf{Operationen:}
+	\begin{itemize}
+		\item \mintinline{java}{pushBack}: Einfügen am Ende des Arrays
+		\item \mintinline{java}{popBack}: Löschen des letzten Elements
+		\item \mintinline{java}{reallocate}: Vergrößern/Verkleinern des Arrays
+	\end{itemize}
+
+	\medskip
+
+	\textbf{Wann wird} \mintinline{java}{reallocate} \textbf{aufgerufen?}
+	\begin{itemize}
+		\item Array voll ($n = w$) und \mintinline{java}{pushBack} wird aufgerufen\\
+		      $\Rightarrow$ neues Array mit Größe $\beta n$ + Kopieren und Einfügen
+		\item Nach \mintinline{java}{popBack} zu leer (d.h. $\alpha \cdot n \leq w$) \\
+		      $\Rightarrow$ neues Array mit Größe $\beta n$ + Kopieren
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Aufgabe 4.4 - Dynamisches Array}
+
+	\begin{small}
+
+		\hangindent=1.5em\hangafter=1
+		\textbf{(a)} Zeigen Sie, dass dieses Amortisationsschema zulässig ist, indem Sie zeigen, dass das
+		Tokenkonto zu jedem Zeitpunkt nichtnegativ ist.
+
+		\hangindent=3.25em
+		\begin{scriptsize}
+			Hinweis: Bezeichne $n_1$ die Zahl der Elemente unmittelbar nach einem \mintinline{java}{reallocate} (bei \mintinline{java}{pushBack} also vor dem Einfügen des neuen Elements).
+			Die Arraygröße zu diesem Zeitpunkt ist $w_1 := \beta \cdot n_1$ und es sind $w_1 - n_1$ Positionen frei.
+			Das nächste \mintinline{java}{reallocate} wird erst dann aufgerufen, wenn für die Zahl $n$ der Elemente entweder $n = w_1$ oder $\alpha n \leq w_1$ gilt.
+		\end{scriptsize}
+
+		\bigskip
+
+		\hangindent=1.5em\hangafter=1
+		\textbf{(b)} Zeigen Sie, dass unter diesem Amortisationsschema die amortisierte Laufzeit jeder Operation in $\mathcal{O}(1)$ liegt, und folgern Sie, dass die Worst-Case-Laufzeit für Operationsfolgen der Länge $m$ in $\mathcal{O}(m)$ liegt.
+
+	\end{small}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Aufgabe 4.4 - Dynamisches Array (a)}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Aufgabe 4.4 - Dynamisches Array (a)}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Aufgabe 4.4 - Dynamisches Array (a)}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Aufgabe 4.4 - Dynamisches Array (b)}
 \end{frame}
 
 \section{E-Aufgaben}
 \begin{frame}
 	\frametitle{E-Aufgaben}
 	\begin{itemize}
-		\item Aufgabe 3.5 - Noch mehr Spaß mit $\mathcal{O}$ \\
+		\item Aufgabe 4.5 - Quicksort Worstcase \\
 		      \begin{itemize}
-			      \item Gute Überprüfung für Verständnis von $\mathcal{O}$
-			      \item Kleiner Induktionsbeweis
+			      \item Worstcase Suche für verschiedene Pivot-Wahlen
 		      \end{itemize}
-		\item Aufgabe 3.6 - Zufallsvariablen-Caching
+		\item Aufgabe 4.6 - Noch mehr Spaß mit $\Delta\text{mortisation}$
 		      \begin{itemize}
-			      \item Übung zu Zufallsvariablen
+			      \item Weitere Übung zum Finden von Amortisationschema
 		      \end{itemize}
 	\end{itemize}
 \end{frame}
@@ -277,7 +444,9 @@
 	\frametitle{Hausaufgaben}
 	\begin{itemize}
 		\item Hausaufgabe 3 - Dynamisches Array \\
-		      (Deadline: 21.05.2025)
+		      (Deadline: 28.05.2025)
+		\item Hausaufgabe 4 - Verbessertes Sortieren \\
+		      (Deadline: 28.05.2025)
 	\end{itemize}
 \end{frame}
 
