@@ -1,0 +1,17 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kd}{class} \PYG{n+nc}{Stapelschlange}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{  }\PYG{k+kd}{private}\PYG{+w}{ }\PYG{n}{Stack}\PYG{+w}{ }\PYG{n}{s1}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{Stack}\PYG{p}{();}
+\PYG{+w}{  }\PYG{k+kd}{private}\PYG{+w}{ }\PYG{n}{Stack}\PYG{+w}{ }\PYG{n}{s2}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{Stack}\PYG{p}{();}
+
+\PYG{+w}{  }\PYG{k+kd}{public}\PYG{+w}{ }\PYG{k+kt}{void}\PYG{+w}{ }\PYG{n+nf}{enqueue}\PYG{p}{(}\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{v}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{  	}\PYG{n}{s1}\PYG{p}{.}\PYG{n+na}{push}\PYG{p}{(}\PYG{n}{v}\PYG{p}{);}
+\PYG{+w}{  }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{  }\PYG{k+kd}{public}\PYG{+w}{ }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n+nf}{dequeue}\PYG{p}{()}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{k}{if}\PYG{p}{(}\PYG{n}{s2}\PYG{p}{.}\PYG{n+na}{isEmpty}\PYG{p}{())}
+\PYG{+w}{      }\PYG{k}{while}\PYG{+w}{ }\PYG{p}{(}\PYG{o}{!}\PYG{n}{s1}\PYG{p}{.}\PYG{n+na}{isEmpty}\PYG{p}{())}
+\PYG{+w}{        }\PYG{n}{s2}\PYG{p}{.}\PYG{n+na}{push}\PYG{p}{(}\PYG{n}{s1}\PYG{p}{.}\PYG{n+na}{pop}\PYG{p}{());}
+\PYG{+w}{    }\PYG{k}{return}\PYG{+w}{ }\PYG{n}{s2}\PYG{p}{.}\PYG{n+na}{pop}\PYG{p}{();}
+\PYG{+w}{  }\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}
