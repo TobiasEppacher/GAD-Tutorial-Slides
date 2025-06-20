@@ -1,0 +1,4 @@
+\babel@toc {ngerman}{}\relax 
+\beamer@sectionintoc {1}{Aufgaben}{3}{0}{1}
+\beamer@sectionintoc {2}{E-Aufgaben}{21}{0}{2}
+\beamer@sectionintoc {3}{Hausaufgaben}{22}{0}{3}

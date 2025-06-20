@@ -1,0 +1,614 @@
+\documentclass{beamer}
+\mode<presentation>
+{
+  \usetheme{ldv}
+  \setbeamercovered{transparent}
+}
+
+% Uncomment this if you're giving a presentation in german...
+\usepackage[ngerman]{babel}
+
+% ...and rename this to "Folie"
+\newcommand{\slidenomenclature}{Folie}
+
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{times}
+\usepackage{graphicx}
+\usepackage{fancyvrb}
+\usepackage{array}
+\usepackage{colortbl}
+\usepackage{tabularx}
+
+% Uncomment me when you need to insert code
+\usepackage{color}
+\usepackage{listings}
+\usepackage{minted}
+\usepackage{algpseudocode}
+% End Code
+
+\usepackage{datetime}
+\usepackage{tikz}
+
+\usetikzlibrary{calc}
+\usetikzlibrary{shapes.geometric}
+\usetikzlibrary{decorations.pathreplacing}
+\usetikzlibrary{positioning}
+
+% Uncomment me when you need video or sound
+% \usepackage{multimedia}
+% \usepackage{hyperref}
+% End video
+
+% Header
+\newcommand{\zwischentitel}{Woche 8}
+\newcommand{\leitthema}{Tobias Eppacher}
+\newcommand{\presdatum}{\formatdate{16}{6}{2025}}
+% End Header
+
+% Titlepage
+\title{Grundlagen: Algorithmen und Datenstrukturen}
+\author{Tobias Eppacher}
+\date{\presdatum}
+\institute{School of Computation, Information and Technology}
+\subtitle{Woche 8}
+% End Titlepage
+
+
+% Slides
+\begin{document}
+
+
+% 1. Slide: Titlepage
+\begin{frame}
+	\titlepage
+\end{frame}
+
+% 2. Slide: TOC
+\begin{frame}
+	\frametitle{Inhalt}
+	\tableofcontents[subsectionstyle=hide]
+\end{frame}
+
+\section{Aufgaben}
+\begin{frame}
+	\frametitle{Aufgabe 9.1 - AVL Bebaumung}
+	Gegeben sei ein AVL-Baum der nur aus einem Knoten mit Schlüssel 10 besteht. Fügen Sie
+	nacheinander die Schlüssel 5, 17, 3, 1, 4 ein. Löschen Sie dann den Schlussel 4, und fügen
+	Sie dann die Schlüssel 8, 2, 7, 6, 9 ein. Löschen Sie dann die Knoten mit den Schlüsseln 2,
+	1, 8. Zeichnen Sie den AVL-Baum für jede Einfüge- bzw. Löschoperation und geben Sie an,
+	ob Sie keine, eine Einfach- oder eine Doppelrotation durchgeführt haben.
+\end{frame}
+
+\begin{frame}[t]
+	\frametitle{Aufgabe 9.1 - AVL Bebaumung}
+	Insert 5:
+
+	\bigskip
+	\bigskip
+
+	\begin{columns}
+		\begin{column}{0.48\textwidth}
+			\begin{center}
+				\begin{tikzpicture}[nodeStyle/.style={circle, draw, minimum size=0.8cm}, scale=0.7, transform shape]
+					\node[nodeStyle] (root) at (0, 0) {10};
+				\end{tikzpicture}
+			\end{center}
+		\end{column}
+		\begin{column}{0.48\textwidth}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}[t]
+	\frametitle{Aufgabe 9.1 - AVL Bebaumung}
+	Insert 17:
+
+	\bigskip
+	\bigskip
+
+	\begin{columns}
+		\begin{column}{0.48\textwidth}
+			\begin{center}
+				\begin{tikzpicture}[nodeStyle/.style={circle, draw, minimum size=0.8cm}, scale=0.7, transform shape]
+					\node[nodeStyle] (root) at (0, 0) {10};
+					\node[nodeStyle] (11) at (-1.5, -1.5) {5};
+
+					\draw (root) -- (11);
+				\end{tikzpicture}
+			\end{center}
+		\end{column}
+		\begin{column}{0.48\textwidth}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}[t]
+	\frametitle{Aufgabe 9.1 - AVL Bebaumung}
+	Insert 3:
+
+	\bigskip
+	\bigskip
+
+	\begin{columns}
+		\begin{column}{0.48\textwidth}
+			\begin{center}
+				\begin{tikzpicture}[nodeStyle/.style={circle, draw, minimum size=0.8cm}, scale=0.7, transform shape]
+					\node[nodeStyle](root) at (0, 0) {10};
+					\node[nodeStyle](11) at (-1.5, -1.5) {5};
+					\node[nodeStyle](12) at ( 1.5, -1.5) {17};
+
+					\draw (root) -- (11);
+					\draw (root) -- (12);
+				\end{tikzpicture}
+			\end{center}
+		\end{column}
+		\begin{column}{0.48\textwidth}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}[t]
+	\frametitle{Aufgabe 9.1 - AVL Bebaumung}
+	Insert 1:
+
+	\bigskip
+	\bigskip
+
+	\begin{columns}
+		\begin{column}{0.48\textwidth}
+			\begin{center}
+				\begin{tikzpicture}[nodeStyle/.style={circle, draw, minimum size=0.8cm}, scale=0.7, transform shape]
+					\node[nodeStyle](root) at (0, 0) {10};
+					\node[nodeStyle](11) at (-1.5, -1.5) {5};
+					\node[nodeStyle](12) at ( 1.5, -1.5) {17};
+					\node[nodeStyle](21) at (-2, -3) {3};
+
+					\draw (root) -- (11);
+					\draw (root) -- (12);
+					\draw (11) -- (21);
+				\end{tikzpicture}
+			\end{center}
+		\end{column}
+		\begin{column}{0.48\textwidth}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}[t]
+	\frametitle{Aufgabe 9.1 - AVL Bebaumung}
+	Insert 4:
+
+	\bigskip
+	\bigskip
+
+	\begin{columns}
+		\begin{column}{0.48\textwidth}
+			\begin{center}
+				\begin{tikzpicture}[nodeStyle/.style={circle, draw, minimum size=0.8cm}, scale=0.7, transform shape]
+					\node[nodeStyle](root) at (0, 0) {10};
+					\node[nodeStyle](11) at (-1.5, -1.5) {5};
+					\node[nodeStyle](12) at ( 1.5, -1.5) {17};
+					\node[nodeStyle](21) at (-2.25, -3) {1};
+					\node[nodeStyle](22) at (-0.75, -3) {3};
+
+					\draw (root) -- (11);
+					\draw (root) -- (12);
+					\draw (11) -- (21);
+					\draw (11) -- (22);
+				\end{tikzpicture}
+			\end{center}
+		\end{column}
+		\begin{column}{0.48\textwidth}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}[t]
+	\frametitle{Aufgabe 9.1 - AVL Bebaumung}
+	Remove 4:
+
+	\bigskip
+	\bigskip
+
+	\begin{columns}
+		\begin{column}{0.48\textwidth}
+			\begin{center}
+				\begin{tikzpicture}[nodeStyle/.style={circle, draw, minimum size=0.8cm}, scale=0.7, transform shape]
+					\node[nodeStyle](root) at (0, 0) {5};
+					\node[nodeStyle](11) at (-1.5, -1.5) {3};
+					\node[nodeStyle](12) at ( 1.5, -1.5) {10};
+					\node[nodeStyle](21) at (-2.25, -3) {1};
+					\node[nodeStyle](22) at (-0.75, -3) {4};
+					\node[nodeStyle](24) at ( 2.25, -3) {17};
+
+					\draw (root) -- (11);
+					\draw (root) -- (12);
+					\draw (11) -- (21);
+					\draw (11) -- (22);
+					\draw (12) -- (24);
+				\end{tikzpicture}
+			\end{center}
+		\end{column}
+		\begin{column}{0.48\textwidth}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}[t]
+	\frametitle{Aufgabe 9.1 - AVL Bebaumung}
+	Insert 8:
+
+	\bigskip
+	\bigskip
+
+	\begin{columns}
+		\begin{column}{0.48\textwidth}
+			\begin{center}
+				\begin{tikzpicture}[nodeStyle/.style={circle, draw, minimum size=0.8cm}, scale=0.7, transform shape]
+					\node[nodeStyle](root) at (0, 0) {5};
+					\node[nodeStyle](11) at (-1.5, -1.5) {3};
+					\node[nodeStyle](12) at ( 1.5, -1.5) {10};
+					\node[nodeStyle](21) at (-2.25, -3) {1};
+					\node[nodeStyle](24) at ( 2.25, -3) {17};
+
+					\draw (root) -- (11);
+					\draw (root) -- (12);
+					\draw (11) -- (21);
+					\draw (12) -- (24);
+				\end{tikzpicture}
+			\end{center}
+		\end{column}
+		\begin{column}{0.48\textwidth}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}[t]
+	\frametitle{Aufgabe 9.1 - AVL Bebaumung}
+	Insert 2:
+
+	\bigskip
+	\bigskip
+
+	\begin{columns}
+		\begin{column}{0.48\textwidth}
+			\begin{center}
+				\begin{tikzpicture}[nodeStyle/.style={circle, draw, minimum size=0.8cm}, scale=0.7, transform shape]
+					\node[nodeStyle](root) at (0, 0) {5};
+					\node[nodeStyle](11) at (-1.5, -1.5) {3};
+					\node[nodeStyle](12) at ( 1.5, -1.5) {10};
+					\node[nodeStyle](21) at (-2.25, -3) {1};
+					\node[nodeStyle](23) at ( 0.75, -3) {8};
+					\node[nodeStyle](24) at ( 2.25, -3) {17};
+
+					\draw (root) -- (11);
+					\draw (root) -- (12);
+					\draw (11) -- (21);
+					\draw (12) -- (23);
+					\draw (12) -- (24);
+				\end{tikzpicture}
+			\end{center}
+		\end{column}
+		\begin{column}{0.48\textwidth}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}[t]
+	\frametitle{Aufgabe 9.1 - AVL Bebaumung}
+	Insert 7:
+
+	\bigskip
+	\bigskip
+
+	\begin{columns}
+		\begin{column}{0.48\textwidth}
+			\begin{center}
+				\begin{tikzpicture}[nodeStyle/.style={circle, draw, minimum size=0.8cm}, scale=0.7, transform shape]
+					\node[nodeStyle](root) at (0, 0) {5};
+					\node[nodeStyle](11) at (-1.5, -1.5) {2};
+					\node[nodeStyle](12) at ( 1.5, -1.5) {10};
+					\node[nodeStyle](21) at (-2.25, -3) {1};
+					\node[nodeStyle](22) at (-0.75, -3) {3};
+					\node[nodeStyle](23) at ( 0.75, -3) {8};
+					\node[nodeStyle](24) at ( 2.25, -3) {17};
+
+					\draw (root) -- (11);
+					\draw (root) -- (12);
+					\draw (11) -- (21);
+					\draw (11) -- (22);
+					\draw (12) -- (23);
+					\draw (12) -- (24);
+				\end{tikzpicture}
+			\end{center}
+		\end{column}
+		\begin{column}{0.48\textwidth}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}[t]
+	\frametitle{Aufgabe 9.1 - AVL Bebaumung}
+	Insert 6:
+
+	\bigskip
+	\bigskip
+
+	\begin{columns}
+		\begin{column}{0.48\textwidth}
+			\begin{center}
+				\begin{tikzpicture}[nodeStyle/.style={circle, draw, minimum size=0.8cm}, scale=0.7, transform shape]
+					\node[nodeStyle](root) at (0, 0) {5};
+					\node[nodeStyle](11) at (-2.5, -1.5) {2};
+					\node[nodeStyle](12) at ( 2.5, -1.5) {10};
+					\node[nodeStyle](21) at (-3.75, -3) {1};
+					\node[nodeStyle](22) at (-1.25, -3) {3};
+					\node[nodeStyle](23) at ( 1.25, -3) {8};
+					\node[nodeStyle](24) at ( 3.75, -3) {17};
+					\node[nodeStyle](35) at ( 0.5, -4.5) {7};
+
+					\draw (root) -- (11);
+					\draw (root) -- (12);
+					\draw (11) -- (21);
+					\draw (11) -- (22);
+					\draw (12) -- (23);
+					\draw (12) -- (24);
+					\draw (23) -- (35);
+				\end{tikzpicture}
+			\end{center}
+		\end{column}
+		\begin{column}{0.48\textwidth}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}[t]
+	\frametitle{Aufgabe 9.1 - AVL Bebaumung}
+	Insert 9:
+
+	\bigskip
+	\bigskip
+
+	\begin{columns}
+		\begin{column}{0.48\textwidth}
+			\begin{center}
+				\begin{tikzpicture}[nodeStyle/.style={circle, draw, minimum size=0.8cm}, scale=0.7, transform shape]
+					\node[nodeStyle](root) at (0, 0) {5};
+					\node[nodeStyle](11) at (-2.5, -1.5) {2};
+					\node[nodeStyle](12) at ( 2.5, -1.5) {10};
+					\node[nodeStyle](21) at (-3.75, -3) {1};
+					\node[nodeStyle](22) at (-1.25, -3) {3};
+					\node[nodeStyle](23) at ( 1.25, -3) {7};
+					\node[nodeStyle](24) at ( 3.75, -3) {17};
+					\node[nodeStyle](35) at ( 0.5, -4.5) {6};
+					\node[nodeStyle](36) at ( 2, -4.5) {8};
+
+					\draw (root) -- (11);
+					\draw (root) -- (12);
+					\draw (11) -- (21);
+					\draw (11) -- (22);
+					\draw (12) -- (23);
+					\draw (12) -- (24);
+					\draw (23) -- (35);
+					\draw (23) -- (36);
+				\end{tikzpicture}
+			\end{center}
+		\end{column}
+		\begin{column}{0.48\textwidth}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}[t]
+	\frametitle{Aufgabe 9.1 - AVL Bebaumung}
+	Remove 2:
+
+	\bigskip
+	\bigskip
+
+	\begin{columns}
+		\begin{column}{0.48\textwidth}
+			\begin{center}
+				\begin{tikzpicture}[nodeStyle/.style={circle, draw, minimum size=0.8cm}, scale=0.7, transform shape]
+					\node[nodeStyle](root) at (0, 0) {5};
+					\node[nodeStyle](11) at (-2.5, -1.5) {2};
+					\node[nodeStyle](12) at ( 2.5, -1.5) {8};
+					\node[nodeStyle](21) at (-3.75, -3) {1};
+					\node[nodeStyle](22) at (-1.25, -3) {3};
+					\node[nodeStyle](23) at ( 1.25, -3) {7};
+					\node[nodeStyle](24) at ( 3.75, -3) {10};
+					\node[nodeStyle](35) at ( 0.5, -4.5) {6};
+					\node[nodeStyle](37) at ( 3, -4.5) {9};
+					\node[nodeStyle](38) at ( 4.5, -4.5) {17};
+
+					\draw (root) -- (11);
+					\draw (root) -- (12);
+					\draw (11) -- (21);
+					\draw (11) -- (22);
+					\draw (12) -- (23);
+					\draw (12) -- (24);
+					\draw (23) -- (35);
+					\draw (24) -- (37);
+					\draw (24) -- (38);
+				\end{tikzpicture}
+			\end{center}
+		\end{column}
+		\begin{column}{0.48\textwidth}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}[t]
+	\frametitle{Aufgabe 9.1 - AVL Bebaumung}
+	Remove 1:
+
+	\bigskip
+	\bigskip
+
+	\begin{columns}
+		\begin{column}{0.48\textwidth}
+			\begin{center}
+				\begin{tikzpicture}[nodeStyle/.style={circle, draw, minimum size=0.8cm}, scale=0.7, transform shape]
+					\node[nodeStyle](root) at (0, 0) {5};
+					\node[nodeStyle](11) at (-2.5, -1.5) {1};
+					\node[nodeStyle](12) at ( 2.5, -1.5) {8};
+					\node[nodeStyle](22) at (-1.25, -3) {3};
+					\node[nodeStyle](23) at ( 1.25, -3) {7};
+					\node[nodeStyle](24) at ( 3.75, -3) {10};
+					\node[nodeStyle](35) at ( 0.5, -4.5) {6};
+					\node[nodeStyle](37) at ( 3, -4.5) {9};
+					\node[nodeStyle](38) at ( 4.5, -4.5) {17};
+
+					\draw (root) -- (11);
+					\draw (root) -- (12);
+					\draw (11) -- (22);
+					\draw (12) -- (23);
+					\draw (12) -- (24);
+					\draw (23) -- (35);
+					\draw (24) -- (37);
+					\draw (24) -- (38);
+				\end{tikzpicture}
+			\end{center}
+		\end{column}
+		\begin{column}{0.48\textwidth}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}[t]
+	\frametitle{Aufgabe 9.1 - AVL Bebaumung}
+	Remove 8:
+
+	\bigskip
+	\bigskip
+
+	\begin{columns}
+		\begin{column}{0.48\textwidth}
+			\begin{center}
+				\begin{tikzpicture}[nodeStyle/.style={circle, draw, minimum size=0.8cm}, scale=0.7, transform shape]
+					\node[nodeStyle](root) at (0, 0) {8};
+					\node[nodeStyle](11) at (-2.5, -1.5) {5};
+					\node[nodeStyle](12) at ( 2.5, -1.5) {10};
+					\node[nodeStyle](21) at (-3.75, -3) {3};
+					\node[nodeStyle](22) at (-1.25, -3) {7};
+					\node[nodeStyle](23) at ( 1.25, -3) {9};
+					\node[nodeStyle](24) at ( 3.75, -3) {17};
+					\node[nodeStyle](33) at (-2, -4.5) {6};
+
+					\draw (root) -- (11);
+					\draw (root) -- (12);
+					\draw (11) -- (21);
+					\draw (11) -- (22);
+					\draw (12) -- (23);
+					\draw (12) -- (24);
+					\draw (22) -- (33);
+				\end{tikzpicture}
+			\end{center}
+		\end{column}
+		\begin{column}{0.48\textwidth}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Aufgabe 9.1 - AVL Bebaumung (Extra Platz)}
+\end{frame}
+
+\begin{frame}[t]
+	\frametitle{Aufgabe 9.2 - ABBaumaßnahmen I}
+	\scriptsize
+
+	Führen Sie auf einem anfangs leeren (2, 3)-Baum die folgenden Operationen aus:
+
+	$$
+		\text{insert: } [19, 11, 28, 38, 37, 30, 7, 59, 41]
+	$$
+
+	gefolgt von:
+
+	$$
+		\text{remove: } [7, 11, 59, 19, 37, 41, 30, 38]
+	$$
+
+	\textbf{Hinweis:} Zeichnen Sie den Baum nach jedem Schritt. Sie dürfen in Ihrer Zeichnung auf
+	Blattknoten verzichten.
+
+	Beachten Sie außerdem das Folgende:
+
+	\begin{itemize}
+		\item Beim Aufspalten von Knoten während dem Einfügen wandert das Element am Index $\lfloor b/2 \rfloor$ nach oben.
+		\item Beim Löschen von Elementen aus inneren Knoten wird üblicherweise versucht, entweder
+		      den symmetrischen Vorgänger oder symmetrischen Nachfolger intelligent zu
+		      wählen. Für diese Aufgabe soll darauf verzichtet werden. Stattdessen wird stets der
+		      symmetrische Vorgänger verwendet. Beim Stehlen von Elementen wird zunächst der
+		      linke Nachbar betrachtet. Beim Verschmelzen werden Knoten sofern möglich mit ihrem
+		      linken Nachbarn, ansonsten mit dem rechten Nachbarn, vereinigt.
+	\end{itemize}
+
+\end{frame}
+
+\begin{frame}[t]
+	\frametitle{Aufgabe 9.2 - ABBaumaßnahmen I}
+	\bigskip
+	\bigskip
+
+	\begin{columns}
+		\begin{column}{0.48\textwidth}
+			\begin{center}
+				\begin{tikzpicture}[nodeStyle/.style={rectangle, draw, minimum size=0.8cm}, spaceStyle/.style={rectangle, draw, minimum width=0.2cm, minimum height=0.8cm}, scale=0.7, transform shape]
+					\node[nodeStyle](root) at (0, 0) {8};
+					\node[spaceStyle](root0) at (-0.5, 0) {};
+					\node[spaceStyle](root1) at (0.5, 0) {};
+				\end{tikzpicture}
+			\end{center}
+		\end{column}
+		\begin{column}{0.48\textwidth}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\section{E-Aufgaben}
+\begin{frame}
+	\frametitle{E-Aufgaben}
+	\begin{itemize}
+		\item Aufgabe 8.5 - Rückblick: Sortierverfahren \\
+		      \begin{itemize}
+			      \item Laufzeitenvergleich von Sortierverfahren
+		      \end{itemize}
+	\end{itemize}
+\end{frame}
+
+\section{Hausaufgaben}
+\begin{frame}
+	\frametitle{Hausaufgaben}
+	\begin{itemize}
+		\item Hausaufgabe 6 - Sortierende Heaps \\
+		      (Deadline: 18.06.2025)
+		\item Hausaufgabe 7 - Binomial Heap \\
+		      (Deadline: 25.07.2025)
+		\item Hausaufgabe 8 - AVL Baum \\
+		      (Deadline: 02.07.2025)
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\textbf{Fragen?}
+	\begin{itemize}
+		\item Nach Übung gerne bei mir melden
+		\item Tutoriumschannel oder DM an mich auf Zulip
+		\item Vorlesungschannels von GAD auf Zulip (insbesondere bei Hausaufgaben)
+	\end{itemize}
+
+	\medskip
+	\textbf{Feedback oder Verbesserungsvorschläge?} \\
+	Gerne nach dem Tutorium mit mir quatschen oder DM auf Zulip
+
+	\medskip
+	\textbf{Bis nächste Woche!}
+\end{frame}
+
+% End Slides
+
+\end{document}
