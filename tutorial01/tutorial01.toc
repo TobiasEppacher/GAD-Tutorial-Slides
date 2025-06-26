@@ -1,8 +1,0 @@
-\babel@toc {ngerman}{}\relax 
-\beamer@sectionintoc {1}{Organisation}{3}{0}{1}
-\beamer@sectionintoc {2}{Aufgaben}{6}{0}{2}
-\beamer@subsectionintoc {2}{1}{Division}{6}{0}{2}
-\beamer@subsectionintoc {2}{2}{Induktion}{9}{0}{2}
-\beamer@subsectionintoc {2}{3}{Bubblesort mit Listen}{14}{0}{2}
-\beamer@sectionintoc {3}{E-Aufgaben}{20}{0}{3}
-\beamer@sectionintoc {4}{Hausaufgaben}{21}{0}{4}

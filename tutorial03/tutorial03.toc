@@ -1,8 +1,0 @@
-\babel@toc {ngerman}{}\relax 
-\beamer@sectionintoc {1}{Aufgaben}{3}{0}{1}
-\beamer@subsectionintoc {1}{1}{Zufallsvariablen}{3}{0}{1}
-\beamer@subsectionintoc {1}{2}{Komplexitätsanalyse}{7}{0}{1}
-\beamer@subsectionintoc {1}{3}{Selbstorganisierende Liste}{14}{0}{1}
-\beamer@subsectionintoc {1}{4}{Aufgabe 3.4 - Algorithmen und Laufzeiten}{18}{0}{1}
-\beamer@sectionintoc {2}{E-Aufgaben}{21}{0}{2}
-\beamer@sectionintoc {3}{Hausaufgaben}{22}{0}{3}

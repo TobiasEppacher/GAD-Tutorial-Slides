@@ -1,6 +1,0 @@
-\babel@toc {ngerman}{}\relax 
-\beamer@sectionintoc {1}{Aufgaben}{3}{0}{1}
-\beamer@subsectionintoc {1}{1}{Sortierverfahren}{3}{0}{1}
-\beamer@subsectionintoc {1}{2}{Bankkonto Tutorial}{7}{0}{1}
-\beamer@sectionintoc {2}{E-Aufgaben}{23}{0}{2}
-\beamer@sectionintoc {3}{Hausaufgaben}{24}{0}{3}
