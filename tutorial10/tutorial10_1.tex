@@ -1,0 +1,427 @@
+\begin{frame}
+    \frametitle{Aufgabe 10.1 - Hashing mit Chaining}
+    \scriptsize
+    Veranschaulichen Sie Hashing mit Chaining. Die Größe $m$ der Hash-Tabelle ist in den folgenden Beispielen jeweils die Primzahl $11$. Die folgenden Operationen sollen nacheinander ausgeführt werden:
+    \begin{itemize}
+      \item insert $3, 11, 9, 7, 14, 56, 4, 12, 15, 8, 1$
+      \item delete $56$
+      \item insert $25$
+    \end{itemize}
+    Der Einfachheit halber sollen die Schlüssel der Elemente die Elemente selbst sein.
+  
+    \medskip
+  
+    a) Verwenden Sie zunächst die Hashfunktion
+    $$g(x) = 5x \mod 11$$
+  
+    b) Berechnen Sie die Hashwerte unter Verwendung der Hashfunktion
+    $$h(x) = \mathbf{a} \cdot \mathbf{x} \mod m$$
+  
+    nach dem aus der Vorlesung bekannten Verfahren füreinfache universelle Hashfunktionen,
+    wobei $\mathbf{a} = (7, 5)$ und $\mathbf{x} = (\lfloor \frac{x}{2^w} \rfloor \mod 2^w, x \mod 2^w)$
+    für $w = \lfloor \log_2 m \rfloor = \lfloor 3.45 \dots \rfloor = 3$ gilt
+    und der Ausdruck $\mathbf{a} \cdot \mathbf{x}$ ein Skalarprodukt bezeichnet.
+  
+  \end{frame}
+  
+  \begin{frame}[t]
+    \frametitle{Aufgabe 10.1 - Hashing mit Chaining (a)}
+  
+    $$g(x) = 5x \mod 11$$
+  
+    \bigskip
+    \bigskip
+    \bigskip
+    \bigskip
+    \bigskip
+    \bigskip
+    \bigskip
+    \bigskip
+    \bigskip
+    \bigskip
+  
+    \begin{center}
+      \begin{tabular}{c|c|c|c|c|c|c|c|c|c|c|c|c}
+        $k(e)$    & 1 & 3 & 4 & 7 & 8 & 9 & 11 & 12 & 14 & 15 & 25 & 56 \\
+        \hline
+        $g(k(e))$ &   &   &   &   &   &   &    &    &    &    &    &    \\
+      \end{tabular}
+    \end{center}
+  \end{frame}
+  
+  \begin{frame}
+    \frametitle{Aufgabe 10.1 - Hashing mit Chaining (a)}
+  
+    \begin{center}
+      \begin{tabular}{c|c|c|c|c|c|c|c|c|c|c|c|c}
+        $k(e)$    & 1 & 3 & 4 & 7 & 8 & 9 & 11 & 12 & 14 & 15 & 25 & 56 \\
+        \hline
+        $g(k(e))$ & 5 & 4 & 9 & 2 & 7 & 1 & 0  & 5  & 4  & 9  & 4  & 5  \\
+      \end{tabular}
+    \end{center}
+  \end{frame}
+  
+  \begin{frame}
+    \frametitle{Aufgabe 10.1 - Hashing mit Chaining (a)}
+  
+    1. Operation: insert(3)
+  
+    \begin{center}
+      \begin{tabular}{c|c|c|c|c|c|c|c|c|c|c|c|c}
+        $k(e)$    & 1 & 3 & 4 & 7 & 8 & 9 & 11 & 12 & 14 & 15 & 25 & 56 \\
+        \hline
+        $g(k(e))$ & 5 & 4 & 9 & 2 & 7 & 1 & 0  & 5  & 4  & 9  & 4  & 5  \\
+      \end{tabular}
+  
+      \bigskip
+  
+      \begin{tabular}{c|c|c|c|c|c|c|c|c|c|c}
+        0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\
+        \hline
+          &   &   &   &   &   &   &   &   &   &    \\
+          &   &   &   &   &   &   &   &   &   &    \\
+          &   &   &   &   &   &   &   &   &   &    \\
+      \end{tabular}
+    \end{center}
+  \end{frame}
+  
+  \begin{frame}
+    \frametitle{Aufgabe 10.1 - Hashing mit Chaining (a)}
+    2. Operation: insert(11)
+    \begin{center}
+      \begin{tabular}{c|c|c|c|c|c|c|c|c|c|c|c|c}
+        $k(e)$    & 1 & 3 & 4 & 7 & 8 & 9 & 11 & 12 & 14 & 15 & 25 & 56 \\
+        \hline
+        $g(k(e))$ & 5 & 4 & 9 & 2 & 7 & 1 & 0  & 5  & 4  & 9  & 4  & 5  \\
+      \end{tabular}
+  
+      \bigskip
+  
+      \begin{tabular}{c|c|c|c|c|c|c|c|c|c|c}
+        0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\
+        \hline
+          &   &   &   & 3 &   &   &   &   &   &    \\
+          &   &   &   &   &   &   &   &   &   &    \\
+          &   &   &   &   &   &   &   &   &   &    \\
+      \end{tabular}
+    \end{center}
+  \end{frame}
+  
+  \begin{frame}
+    \frametitle{Aufgabe 10.1 - Hashing mit Chaining (a)}
+    3. Operation: insert(9)
+    \begin{center}
+      \begin{tabular}{c|c|c|c|c|c|c|c|c|c|c|c|c}
+        $k(e)$    & 1 & 3 & 4 & 7 & 8 & 9 & 11 & 12 & 14 & 15 & 25 & 56 \\
+        \hline
+        $g(k(e))$ & 5 & 4 & 9 & 2 & 7 & 1 & 0  & 5  & 4  & 9  & 4  & 5  \\
+      \end{tabular}
+  
+      \bigskip
+  
+      \begin{tabular}{c|c|c|c|c|c|c|c|c|c|c}
+        0  & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\
+        \hline
+        11 &   &   &   & 3 &   &   &   &   &   &    \\
+           &   &   &   &   &   &   &   &   &   &    \\
+           &   &   &   &   &   &   &   &   &   &    \\
+      \end{tabular}
+    \end{center}
+  \end{frame}
+  
+  \begin{frame}
+    \frametitle{Aufgabe 10.1 - Hashing mit Chaining (a)}
+    4. Operation: insert(7)
+    \begin{center}
+      \begin{tabular}{c|c|c|c|c|c|c|c|c|c|c|c|c}
+        $k(e)$    & 1 & 3 & 4 & 7 & 8 & 9 & 11 & 12 & 14 & 15 & 25 & 56 \\
+        \hline
+        $g(k(e))$ & 5 & 4 & 9 & 2 & 7 & 1 & 0  & 5  & 4  & 9  & 4  & 5  \\
+      \end{tabular}
+  
+      \bigskip
+  
+      \begin{tabular}{c|c|c|c|c|c|c|c|c|c|c}
+        0  & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\
+        \hline
+        11 & 9 &   &   & 3 &   &   &   &   &   &    \\
+           &   &   &   &   &   &   &   &   &   &    \\
+           &   &   &   &   &   &   &   &   &   &    \\
+      \end{tabular}
+    \end{center}
+  \end{frame}
+  
+  \begin{frame}
+    \frametitle{Aufgabe 10.1 - Hashing mit Chaining (a)}
+    5. Operation: insert(14)
+    \begin{center}
+      \begin{tabular}{c|c|c|c|c|c|c|c|c|c|c|c|c}
+        $k(e)$    & 1 & 3 & 4 & 7 & 8 & 9 & 11 & 12 & 14 & 15 & 25 & 56 \\
+        \hline
+        $g(k(e))$ & 5 & 4 & 9 & 2 & 7 & 1 & 0  & 5  & 4  & 9  & 4  & 5  \\
+      \end{tabular}
+  
+      \bigskip
+  
+      \begin{tabular}{c|c|c|c|c|c|c|c|c|c|c}
+        0  & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\
+        \hline
+        11 & 9 & 7 &   & 3 &   &   &   &   &   &    \\
+           &   &   &   &   &   &   &   &   &   &    \\
+           &   &   &   &   &   &   &   &   &   &    \\
+      \end{tabular}
+    \end{center}
+  \end{frame}
+  
+  \begin{frame}
+    \frametitle{Aufgabe 10.1 - Hashing mit Chaining (a)}
+    6. Operation: insert(56)
+    \begin{center}
+      \begin{tabular}{c|c|c|c|c|c|c|c|c|c|c|c|c}
+        $k(e)$    & 1 & 3 & 4 & 7 & 8 & 9 & 11 & 12 & 14 & 15 & 25 & 56 \\
+        \hline
+        $g(k(e))$ & 5 & 4 & 9 & 2 & 7 & 1 & 0  & 5  & 4  & 9  & 4  & 5  \\
+      \end{tabular}
+  
+      \bigskip
+  
+      \begin{tabular}{c|c|c|c|c|c|c|c|c|c|c}
+        0  & 1 & 2 & 3 & 4  & 5 & 6 & 7 & 8 & 9 & 10 \\
+        \hline
+        11 & 9 & 7 &   & 3  &   &   &   &   &   &    \\
+           &   &   &   & 14 &   &   &   &   &   &    \\
+           &   &   &   &    &   &   &   &   &   &    \\
+      \end{tabular}
+    \end{center}
+  \end{frame}
+  
+  \begin{frame}
+    \frametitle{Aufgabe 10.1 - Hashing mit Chaining (a)}
+    7. Operation: insert(4)
+    \begin{center}
+      \begin{tabular}{c|c|c|c|c|c|c|c|c|c|c|c|c}
+        $k(e)$    & 1 & 3 & 4 & 7 & 8 & 9 & 11 & 12 & 14 & 15 & 25 & 56 \\
+        \hline
+        $g(k(e))$ & 5 & 4 & 9 & 2 & 7 & 1 & 0  & 5  & 4  & 9  & 4  & 5  \\
+      \end{tabular}
+  
+      \bigskip
+  
+      \begin{tabular}{c|c|c|c|c|c|c|c|c|c|c}
+        0  & 1 & 2 & 3 & 4  & 5  & 6 & 7 & 8 & 9 & 10 \\
+        \hline
+        11 & 9 & 7 &   & 3  & 56 &   &   &   &   &    \\
+           &   &   &   & 14 &    &   &   &   &   &    \\
+           &   &   &   &    &    &   &   &   &   &    \\
+      \end{tabular}
+    \end{center}
+  \end{frame}
+  
+  \begin{frame}
+    \frametitle{Aufgabe 10.1 - Hashing mit Chaining (a)}
+    8. Operation: insert(12)
+    \begin{center}
+      \begin{tabular}{c|c|c|c|c|c|c|c|c|c|c|c|c}
+        $k(e)$    & 1 & 3 & 4 & 7 & 8 & 9 & 11 & 12 & 14 & 15 & 25 & 56 \\
+        \hline
+        $g(k(e))$ & 5 & 4 & 9 & 2 & 7 & 1 & 0  & 5  & 4  & 9  & 4  & 5  \\
+      \end{tabular}
+  
+      \bigskip
+  
+      \begin{tabular}{c|c|c|c|c|c|c|c|c|c|c}
+        0  & 1 & 2 & 3 & 4  & 5  & 6 & 7 & 8 & 9 & 10 \\
+        \hline
+        11 & 9 & 7 &   & 3  & 56 &   &   &   & 4 &    \\
+           &   &   &   & 14 &    &   &   &   &   &    \\
+           &   &   &   &    &    &   &   &   &   &    \\
+      \end{tabular}
+    \end{center}
+  \end{frame}
+  
+  \begin{frame}
+    \frametitle{Aufgabe 10.1 - Hashing mit Chaining (a)}
+    9. Operation: insert(15)
+    \begin{center}
+      \begin{tabular}{c|c|c|c|c|c|c|c|c|c|c|c|c}
+        $k(e)$    & 1 & 3 & 4 & 7 & 8 & 9 & 11 & 12 & 14 & 15 & 25 & 56 \\
+        \hline
+        $g(k(e))$ & 5 & 4 & 9 & 2 & 7 & 1 & 0  & 5  & 4  & 9  & 4  & 5  \\
+      \end{tabular}
+  
+      \bigskip
+  
+      \begin{tabular}{c|c|c|c|c|c|c|c|c|c|c}
+        0  & 1 & 2 & 3 & 4  & 5  & 6 & 7 & 8 & 9 & 10 \\
+        \hline
+        11 & 9 & 7 &   & 3  & 56 &   &   &   & 4 &    \\
+           &   &   &   & 14 & 12 &   &   &   &   &    \\
+           &   &   &   &    &    &   &   &   &   &    \\
+      \end{tabular}
+    \end{center}
+  \end{frame}
+  
+  \begin{frame}
+    \frametitle{Aufgabe 10.1 - Hashing mit Chaining (a)}
+    10. Operation: insert(8)
+    \begin{center}
+      \begin{tabular}{c|c|c|c|c|c|c|c|c|c|c|c|c}
+        $k(e)$    & 1 & 3 & 4 & 7 & 8 & 9 & 11 & 12 & 14 & 15 & 25 & 56 \\
+        \hline
+        $g(k(e))$ & 5 & 4 & 9 & 2 & 7 & 1 & 0  & 5  & 4  & 9  & 4  & 5  \\
+      \end{tabular}
+  
+      \bigskip
+  
+      \begin{tabular}{c|c|c|c|c|c|c|c|c|c|c}
+        0  & 1 & 2 & 3 & 4  & 5  & 6 & 7 & 8 & 9  & 10 \\
+        \hline
+        11 & 9 & 7 &   & 3  & 56 &   &   &   & 4  &    \\
+           &   &   &   & 14 & 12 &   &   &   & 15 &    \\
+           &   &   &   &    &    &   &   &   &    &    \\
+      \end{tabular}
+    \end{center}
+  \end{frame}
+  
+  \begin{frame}
+    \frametitle{Aufgabe 10.1 - Hashing mit Chaining (a)}
+    11. Operation: insert(1)
+    \begin{center}
+      \begin{tabular}{c|c|c|c|c|c|c|c|c|c|c|c|c}
+        $k(e)$    & 1 & 3 & 4 & 7 & 8 & 9 & 11 & 12 & 14 & 15 & 25 & 56 \\
+        \hline
+        $g(k(e))$ & 5 & 4 & 9 & 2 & 7 & 1 & 0  & 5  & 4  & 9  & 4  & 5  \\
+      \end{tabular}
+  
+      \bigskip
+  
+      \begin{tabular}{c|c|c|c|c|c|c|c|c|c|c}
+        0  & 1 & 2 & 3 & 4  & 5  & 6 & 7 & 8 & 9  & 10 \\
+        \hline
+        11 & 9 & 7 &   & 3  & 56 &   & 8 &   & 4  &    \\
+           &   &   &   & 14 & 12 &   &   &   & 15 &    \\
+           &   &   &   &    &    &   &   &   &    &    \\
+      \end{tabular}
+    \end{center}
+  \end{frame}
+  
+  \begin{frame}
+    \frametitle{Aufgabe 10.1 - Hashing mit Chaining (a)}
+    12. Operation: delete(56)
+    \begin{center}
+      \begin{tabular}{c|c|c|c|c|c|c|c|c|c|c|c|c}
+        $k(e)$    & 1 & 3 & 4 & 7 & 8 & 9 & 11 & 12 & 14 & 15 & 25 & 56 \\
+        \hline
+        $g(k(e))$ & 5 & 4 & 9 & 2 & 7 & 1 & 0  & 5  & 4  & 9  & 4  & 5  \\
+      \end{tabular}
+  
+      \bigskip
+  
+      \begin{tabular}{c|c|c|c|c|c|c|c|c|c|c}
+        0  & 1 & 2 & 3 & 4  & 5  & 6 & 7 & 8 & 9  & 10 \\
+        \hline
+        11 & 9 & 7 &   & 3  & 56 &   & 8 &   & 4  &    \\
+           &   &   &   & 14 & 12 &   &   &   & 15 &    \\
+           &   &   &   &    & 1  &   &   &   &    &    \\
+      \end{tabular}
+    \end{center}
+  \end{frame}
+  
+  \begin{frame}
+    \frametitle{Aufgabe 10.1 - Hashing mit Chaining (a)}
+    13. Operation: insert(25)
+    \begin{center}
+      \begin{tabular}{c|c|c|c|c|c|c|c|c|c|c|c|c}
+        $k(e)$    & 1 & 3 & 4 & 7 & 8 & 9 & 11 & 12 & 14 & 15 & 25 & 56 \\
+        \hline
+        $g(k(e))$ & 5 & 4 & 9 & 2 & 7 & 1 & 0  & 5  & 4  & 9  & 4  & 5  \\
+      \end{tabular}
+  
+      \bigskip
+  
+      \begin{tabular}{c|c|c|c|c|c|c|c|c|c|c}
+        0  & 1 & 2 & 3 & 4  & 5  & 6 & 7 & 8 & 9  & 10 \\
+        \hline
+        11 & 9 & 7 &   & 3  & 12 &   & 8 &   & 4  &    \\
+           &   &   &   & 14 & 1  &   &   &   & 15 &    \\
+           &   &   &   &    &    &   &   &   &    &    \\
+      \end{tabular}
+    \end{center}
+  \end{frame}
+  
+  \begin{frame}
+    \frametitle{Aufgabe 10.1 - Hashing mit Chaining (a)}
+    13. Operation: insert(25)
+    \begin{center}
+      \begin{tabular}{c|c|c|c|c|c|c|c|c|c|c|c|c}
+        $k(e)$    & 1 & 3 & 4 & 7 & 8 & 9 & 11 & 12 & 14 & 15 & 25 & 56 \\
+        \hline
+        $g(k(e))$ & 5 & 4 & 9 & 2 & 7 & 1 & 0  & 5  & 4  & 9  & 4  & 5  \\
+      \end{tabular}
+  
+      \bigskip
+  
+      \begin{tabular}{c|c|c|c|c|c|c|c|c|c|c}
+        0  & 1 & 2 & 3 & 4  & 5  & 6 & 7 & 8 & 9  & 10 \\
+        \hline
+        11 & 9 & 7 &   & 3  & 12 &   & 8 &   & 4  &    \\
+           &   &   &   & 14 & 1  &   &   &   & 15 &    \\
+           &   &   &   & 25 &    &   &   &   &    &    \\
+      \end{tabular}
+    \end{center}
+  \end{frame}
+  
+  \begin{frame}
+    \frametitle{Aufgabe 10.1 - Hashing mit Chaining (b)}
+    b) Berechnen Sie die Hashwerte unter Verwendung der Hashfunktion
+    $$h(x) = \mathbf{a} \cdot \mathbf{x} \mod m$$
+    nach dem aus der Vorlesung bekannten Verfahren für einfache universelle Hashfunktionen,
+    wobei $\mathbf{a} = (7, 5)$ und $\mathbf{x} = (\lfloor \frac{x}{2^w} \rfloor \mod 2^w, x \mod 2^w)$
+    für $w = \lfloor \log_2 m \rfloor = \lfloor 3.45 \dots \rfloor = 3$ gilt
+    und der Ausdruck $\mathbf{a} \cdot \mathbf{x}$ ein Skalarprodukt bezeichnet.
+  
+    \bigskip
+    \bigskip
+  
+    \begin{center}
+      \begin{tabular}{c|c|c|c|c|c|c|c|c|c|c|c|c}
+        $k(e)$    & 1 & 3 & 4 & 7 & 8 & 9 & 11 & 12 & 14 & 15 & 25 & 56 \\
+        \hline
+        $h(k(e))$ &   &   &   &   &   &   &    &    &    &    &    &    \\
+      \end{tabular}
+    \end{center}
+  \end{frame}
+  
+  \begin{frame}[t]
+    \frametitle{Aufgabe 10.1 - Hashing mit Chaining (b)}
+    $$h(x) = \mathbf{a} \cdot \mathbf{x} \mod m$$
+    $$\mathbf{a} = (7, 5) \qquad \mathbf{x} = \left(\lfloor \frac{x}{2^w} \rfloor \mod 2^w, x \mod 2^w\right) $$
+  
+    \bigskip
+    \bigskip
+    \bigskip
+    \bigskip
+    \bigskip
+    \bigskip
+    \bigskip
+    \bigskip
+  
+    \begin{center}
+      \begin{tabular}{c|c|c|c|c|c|c|c|c|c|c|c|c}
+        $k(e)$    & 1 & 3 & 4 & 7 & 8 & 9 & 11 & 12 & 14 & 15 & 25 & 56 \\
+        \hline
+        $h(k(e))$ &   &   &   &   &   &   &    &    &    &    &    &    \\
+      \end{tabular}
+    \end{center}
+  \end{frame}
+  
+  \begin{frame}
+    \frametitle{Aufgabe 10.1 - Hashing mit Chaining (b)}
+    \begin{center}
+      \begin{tabular}{c|c|c|c|c|c|c|c|c|c|c|c|c}
+        $k(e)$    & 1 & 3 & 4 & 7 & 8 & 9 & 11 & 12 & 14 & 15 & 25 & 56 \\
+        \hline
+        $h(k(e))$ & 5 & 4 & 9 & 2 & 7 & 1 & 0  & 5  & 4  & 9  & 4  & 5  \\
+      \end{tabular}
+    \end{center}
+  \end{frame}
