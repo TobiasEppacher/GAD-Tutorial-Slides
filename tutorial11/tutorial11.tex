@@ -1,0 +1,611 @@
+\documentclass{beamer}
+\mode<presentation>
+{
+  \usetheme{ldv}
+  \setbeamercovered{transparent}
+}
+
+% Uncomment this if you're giving a presentation in german...
+\usepackage[ngerman]{babel}
+
+% ...and rename this to "Folie"
+\newcommand{\slidenomenclature}{Folie}
+
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{times}
+\usepackage{graphicx}
+\usepackage{fancyvrb}
+\usepackage{array}
+\usepackage{colortbl}
+\usepackage{tabularx}
+
+% Uncomment me when you need to insert code
+\usepackage{color}
+\usepackage{listings}
+\usepackage{minted}
+\usepackage{algpseudocode}
+% End Code
+
+\usepackage{datetime}
+\usepackage{tikz}
+
+\usetikzlibrary{calc}
+\usetikzlibrary{shapes.geometric}
+\usetikzlibrary{decorations.pathreplacing}
+
+% Uncomment me when you need video or sound
+% \usepackage{multimedia}
+% \usepackage{hyperref}
+% End video
+
+% Header
+\newcommand{\zwischentitel}{Woche 11}
+\newcommand{\leitthema}{Tobias Eppacher}
+\newcommand{\presdatum}{\formatdate{7}{7}{2025}}
+% End Header
+
+% Titlepage
+\title{Grundlagen: Algorithmen und Datenstrukturen}
+\author{Tobias Eppacher}
+\date{\presdatum}
+\institute{School of Computation, Information and Technology}
+\subtitle{Woche 11}
+% End Titlepage
+
+
+% Slides
+\begin{document}
+
+
+% 1. Slide: Titlepage
+\begin{frame}
+	\titlepage
+\end{frame}
+
+% 2. Slide: TOC
+\begin{frame}
+	\frametitle{Inhalt}
+	\tableofcontents[subsectionstyle=hide]
+\end{frame}
+
+\section{Aufgaben}
+
+\begin{frame}
+	\frametitle{Aufgabe 11.1 - Universelles Hashing}
+
+	\small
+	Die Pinguingattungen {Brillenpinguin, Zwergpinguin, Eselspinguin, Kaiserpinguin, Goldschopfpinguin}
+	sollen in einer Hash-Tabelle der Größe $m = 4$ untergebracht werden. Es seien folgende Hashfunktionen gegeben:
+
+	\begin{table}
+		\tiny
+		\centering
+		\begin{tabular}{llllll}
+			$f_1:$ & Brillenp. $\mapsto 4$ & Zwergp. $\mapsto 2$ & Eselsp. $\mapsto 2$ & Kaiserp. $\mapsto 1$ & Goldschopfp. $\mapsto 4$ \\
+			$f_2:$ & Brillenp. $\mapsto 3$ & Zwergp. $\mapsto 4$ & Eselsp. $\mapsto 2$ & Kaiserp. $\mapsto 3$ & Goldschopfp. $\mapsto 4$ \\
+			$f_3:$ & Brillenp. $\mapsto 2$ & Zwergp. $\mapsto 2$ & Eselsp. $\mapsto 4$ & Kaiserp. $\mapsto 1$ & Goldschopfp. $\mapsto 1$ \\
+			$f_4:$ & Brillenp. $\mapsto 1$ & Zwergp. $\mapsto 3$ & Eselsp. $\mapsto 3$ & Kaiserp. $\mapsto 4$ & Goldschopfp. $\mapsto 4$ \\
+			\hline\hline
+			$g_1:$ & Brillenp. $\mapsto 1$ & Zwergp. $\mapsto 1$ & Eselsp. $\mapsto 3$ & Kaiserp. $\mapsto 2$ & Goldschopfp. $\mapsto 3$ \\
+			$g_2:$ & Brillenp. $\mapsto 2$ & Zwergp. $\mapsto 4$ & Eselsp. $\mapsto 2$ & Kaiserp. $\mapsto 3$ & Goldschopfp. $\mapsto 4$ \\
+			$g_3:$ & Brillenp. $\mapsto 4$ & Zwergp. $\mapsto 4$ & Eselsp. $\mapsto 1$ & Kaiserp. $\mapsto 4$ & Goldschopfp. $\mapsto 2$ \\
+			$g_4:$ & Brillenp. $\mapsto 3$ & Zwergp. $\mapsto 1$ & Eselsp. $\mapsto 2$ & Kaiserp. $\mapsto 3$ & Goldschopfp. $\mapsto 3$ \\
+			$g_5:$ & Brillenp. $\mapsto 4$ & Zwergp. $\mapsto 2$ & Eselsp. $\mapsto 2$ & Kaiserp. $\mapsto 2$ & Goldschopfp. $\mapsto 3$ \\
+		\end{tabular}
+	\end{table}
+
+	In der Vorlesung haben wir den Begriff der $c$-universellen Hashfunktionen kennengelernt.
+
+	\begin{enumerate}
+		\renewcommand{\theenumi}{\alph{enumi}}
+		\item Geben Sie für die Familie $\mathcal{H}_1 = \{ f_1, f_2, f_3, f_4 \}$ das kleinste $c$ an, so dass $\mathcal{H}_1$ $c$-universell ist
+		\item Finden Sie eine möglichst kleine Familie $\mathcal{H}_2 \subseteq \{ g_1, g_2, g_3, g_4, g_5 \}$, die $1$-universell ist.
+		      Untermauern Sie Ihre Aussagen mit glaubwürdigen Argumenten.
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}[t]
+	\frametitle{Aufgabe 11.1 - Universelles Hashing (a)}
+	\small
+	Eine Familie von Hashfunktionen $\mathcal{H}$ ist $c$-universell, wenn für alle Wertepaare $x, y$ mit $x \neq y$ gilt:
+
+	$$\frac{|\{ f \in \mathcal{H} : f(x) = f(y) \}|}{\mathcal{H}} \leq \frac{c}{m}$$
+
+	\begin{table}
+		\tiny
+		\centering
+		\begin{tabular}{|l||c|c|c|c||c|c|c|c|c|}
+			\hline
+			Paar                             & $f_1$ & $f_2$ & $f_3$ & $f_4$ & $g_1$ & $g_2$ & $g_3$ & $g_4$ & $g_5$ \\
+			\hline\hline
+			Brillenpinguin/Zwergpinguin      &       &       &       &       &       &       &       &       &       \\
+			\hline
+			Brillenpinguin/Eselspinguin      &       &       &       &       &       &       &       &       &       \\
+			\hline
+			Brillenpinguin/Kaiserpinguin     &       &       &       &       &       &       &       &       &       \\
+			\hline
+			Brillenpinguin/Goldschopfpinguin &       &       &       &       &       &       &       &       &       \\
+			\hline
+			Zwergpinguin/Eselspinguin        &       &       &       &       &       &       &       &       &       \\
+			\hline
+			Zwergpinguin/Kaiserpinguin       &       &       &       &       &       &       &       &       &       \\
+			\hline
+			Zwergpinguin/Goldschopfpinguin   &       &       &       &       &       &       &       &       &       \\
+			\hline
+			Eselspinguin/Kaiserpinguin       &       &       &       &       &       &       &       &       &       \\
+			\hline
+			Eselspinguin/Goldschopfpinguin   &       &       &       &       &       &       &       &       &       \\
+			\hline
+			Kaiserpinguin/Goldschopfpinguin  &       &       &       &       &       &       &       &       &       \\
+			\hline
+		\end{tabular}
+	\end{table}
+\end{frame}
+
+\begin{frame}[t]
+	\frametitle{Aufgabe 11.1 - Universelles Hashing (a)}
+	\scriptsize
+	$$\frac{|\{ f \in \mathcal{H} : f(x) = f(y) \}|}{\mathcal{H}} \leq \frac{c}{m}$$
+	\begin{table}
+		\tiny
+		\centering
+		\begin{tabular}{|l||c|c|c|c||c|c|c|c|c|}
+			\hline
+			Paar                             & $f_1$ & $f_2$ & $f_3$ & $f_4$ & $g_1$ & $g_2$ & $g_3$ & $g_4$ & $g_5$ \\
+			\hline\hline
+			Brillenpinguin/Zwergpinguin      &       &       & x     &       & x     &       & x     &       &       \\
+			\hline
+			Brillenpinguin/Eselspinguin      &       &       &       &       &       & x     &       &       &       \\
+			\hline
+			Brillenpinguin/Kaiserpinguin     &       & x     &       &       &       &       & x     & x     &       \\
+			\hline
+			Brillenpinguin/Goldschopfpinguin & x     &       &       &       &       &       &       & x     &       \\
+			\hline
+			Zwergpinguin/Eselspinguin        & x     &       &       & x     &       &       &       &       & x     \\
+			\hline
+			Zwergpinguin/Kaiserpinguin       &       &       &       &       &       &       & x     &       & x     \\
+			\hline
+			Zwergpinguin/Goldschopfpinguin   &       & x     &       &       &       & x     &       &       &       \\
+			\hline
+			Eselspinguin/Kaiserpinguin       &       &       &       &       &       &       &       &       & x     \\
+			\hline
+			Eselspinguin/Goldschopfpinguin   &       &       &       &       & x     &       &       &       &       \\
+			\hline
+			Kaiserpinguin/Goldschopfpinguin  &       &       & x     & x     &       &       &       & x     &       \\
+			\hline
+		\end{tabular}
+	\end{table}
+
+	Wir suchen kleinst-mögliches $c$ für $\mathcal{H}_1 = \{ f_1, f_2, f_3, f_4 \}$
+\end{frame}
+
+\begin{frame}
+	\frametitle{Aufgabe 11.1 - Universelles Hashing (a) - Extraplatz}
+\end{frame}
+
+\begin{frame}[t]
+	\frametitle{Aufgabe 11.1 - Universelles Hashing (b)}
+
+	\scriptsize
+	$$\frac{|\{ f \in \mathcal{H} : f(x) = f(y) \}|}{\mathcal{H}} \leq \frac{c}{m}$$
+	\begin{table}
+		\tiny
+		\centering
+		\begin{tabular}{|l||c|c|c|c||c|c|c|c|c|}
+			\hline
+			Paar                             & $f_1$ & $f_2$ & $f_3$ & $f_4$ & $g_1$ & $g_2$ & $g_3$ & $g_4$ & $g_5$ \\
+			\hline\hline
+			Brillenpinguin/Zwergpinguin      &       &       & x     &       & x     &       & x     &       &       \\
+			\hline
+			Brillenpinguin/Eselspinguin      &       &       &       &       &       & x     &       &       &       \\
+			\hline
+			Brillenpinguin/Kaiserpinguin     &       & x     &       &       &       &       & x     & x     &       \\
+			\hline
+			Brillenpinguin/Goldschopfpinguin & x     &       &       &       &       &       &       & x     &       \\
+			\hline
+			Zwergpinguin/Eselspinguin        & x     &       &       & x     &       &       &       &       & x     \\
+			\hline
+			Zwergpinguin/Kaiserpinguin       &       &       &       &       &       &       & x     &       & x     \\
+			\hline
+			Zwergpinguin/Goldschopfpinguin   &       & x     &       &       &       & x     &       &       &       \\
+			\hline
+			Eselspinguin/Kaiserpinguin       &       &       &       &       &       &       &       &       & x     \\
+			\hline
+			Eselspinguin/Goldschopfpinguin   &       &       &       &       & x     &       &       &       &       \\
+			\hline
+			Kaiserpinguin/Goldschopfpinguin  &       &       & x     & x     &       &       &       & x     &       \\
+			\hline
+		\end{tabular}
+	\end{table}
+
+	Wir suchen eine möglichst kleine Familie $\mathcal{H}_2 \subseteq \{ g_1, f_2, g_3, g_4, g_5 \}$, sodass $c = 1$ ist.
+\end{frame}
+
+\begin{frame}
+	\frametitle{Aufgabe 11.1 - Universelles Hashing (b) - Extraplatz}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Aufgabe 11.2 - Die perfektes Hashtabelle}
+	\small
+	Konstruieren Sie eine statische perfekte Hashtabelle für die Elemente:
+	$$(16, 10, 11) \  (8, 2, 15) \ (7, 12, 8) \  (1, 10, 3) \ (13, 11, 14) \ (6, 11, 14)$$
+	$$(7, 3, 16) \  (2, 2, 8) \  (10, 5, 15)  \ (7, 3, 14)  \ (2, 10, 1)  \ (14, 11, 6)$$
+
+	\begin{columns}
+		\begin{column}{0.48\textwidth}
+			Jedes Element $x$ besteht aus den Stellen $(x_0, x_1, x_2)$. Verwenden Sie jeweils passend eine der Hashfunktionen:
+			\tiny
+			\begin{gather*}
+				\left( \sum_{i=0}^{2} 2^i x_i \right) \mod 17 \\
+				\left( \sum_{i=0}^{2} a_i x_i \right) \mod 7 \text{ mit } a = (0, 0, 1) \text{ oder } a = (6, 6, 2) \\
+				\left( \sum_{i=0}^{2} a_i x_i \right) \mod 3 \text{ mit } a = (1, 0, 0) \text{ oder } a = (0, 2, 2)
+			\end{gather*}
+		\end{column}
+		\begin{column}{0.48\textwidth}
+			\textbf{Stufe 1:} Ziehe aus $c$-universeller Familie $H_{\lceil \sqrt{2}cn \rceil}$ bis $C(n) < \sqrt{2}n$
+
+			\medskip
+			\textbf{Stufe 2:} Bei $b_\ell$ Elementen wähle Bucketgröße $m_\ell = cb_\ell(b_\ell - 1) + 1$. \\
+			Ziehe aus $c$-universeller Familie $H_{m_\ell}$ bis injektiver Abbildung.
+
+			\medskip
+			\scriptsize
+			\textit{Wir müssen hier nicht ziehen, sondern nur die angegebenen Hashfunktionen verwenden.}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Aufgabe 11.2 - Die perfektes Hashtabelle}
+
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+		\end{column}
+		\begin{column}{0.38\textwidth}
+			\begin{table}
+				\centering
+				\small
+				\begin{tabular}{c|c}
+					Element        & Bucket \\
+					\hline
+					$(7, 3, 14)$   & $1$    \\
+					$(2, 2, 8)$    & $4$    \\
+					$(8, 2, 15)$   & $4$    \\
+					$(13, 11, 14)$ & $6$    \\
+					$(2, 10, 1)$   & $9$    \\
+					$(14, 11, 6)$  & $9$    \\
+					$(7, 3, 16)$   & $9$    \\
+					$(16, 10, 11)$ & $12$   \\
+					$(7, 12, 8)$   & $12$   \\
+					$(10, 5, 15)$  & $12$   \\
+					$(1, 10, 3)$   & $16$   \\
+					$(6, 11, 14)$  & $16$   \\
+				\end{tabular}
+			\end{table}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Aufgabe 11.2 - Die perfektes Hashtabelle}
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Aufgabe 11.2 - Die perfektes Hashtabelle}
+	\small
+	Finale Platzierungen der Elemente in der Hashtabelle:
+	\begin{table}
+		\centering
+		\small
+		\begin{tabular}{c|c|c}
+			Element        & Bucket &     \\
+			\hline
+			$(7, 3, 14)$   & $1$    & $0$ \\
+			$(2, 2, 8)$    & $4$    & $2$ \\
+			$(8, 2, 15)$   & $4$    & $1$ \\
+			$(13, 11, 14)$ & $6$    & $0$ \\
+			$(2, 10, 1)$   & $9$    & $1$ \\
+			$(14, 11, 6)$  & $9$    & $6$ \\
+			$(7, 3, 16)$   & $9$    & $2$ \\
+			$(16, 10, 11)$ & $12$   & $3$ \\
+			$(7, 12, 8)$   & $12$   & $4$ \\
+			$(10, 5, 15)$  & $12$   & $1$ \\
+			$(1, 10, 3)$   & $16$   & $1$ \\
+			$(6, 11, 14)$  & $16$   & $0$ \\
+		\end{tabular}
+	\end{table}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Aufgabe 11.3 Linear Probing}
+	\scriptsize
+	Veranschaulichen Sie Hashing mit Linear Probing.
+
+	\smallskip
+	Die Größe der Hashtabelle ist dabei jeweils $m = 13$. Führen Sie die folgenden Operationen aus:
+	\begin{align*}
+		 & \text{insert} \quad 16, 3, 12, 17, 29, 10, 24   \\
+		 & \text{delete} \quad 16                          \\
+		 & \text{insert} \quad 5, 1,                    15 \\
+		 & \text{delete} \quad 10                          \\
+		 & \text{insert} \quad 14                          \\
+		 & \text{delete} \quad 1
+	\end{align*}
+	Verwenden Sie die Hashfunktion
+	$$h(x) = 3x \mod 13$$
+
+	Beim Löschen soll die dritte Methode aus der Vorlesung verwendet werden, d.h. die Wiederherstellung der folgenden Invariante: Für jedes Element $e$ in der Hashtabelle mit Schlüssel
+	$k(e)$, aktueller Position $j$ und optimaler Position $i = h(k(e))$ sind alle Positionen $i,(i + 1) \mod m,(i + 2) \mod m, . . . , j$ der Hashtabelle belegt.
+	Bei dieser Aufgabe soll keine dynamische Größenanpassung der Hashtabelle stattfinden.
+\end{frame}
+
+\begin{frame}
+	\frametitle{Aufgabe 11.3 Linear Probing}
+	1. Operation: \textbf{insert}(16) mit opt. Position: \textbf{9}
+	\begin{table}
+		\centering
+		\begin{tabular}{c|c|c|c|c|c|c|c|c|c|c|c|c}
+			0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 \\
+			\hline
+			  &   &   &   &   &   &   &   &   &   &    &    &    \\
+		\end{tabular}
+	\end{table}
+
+	2. Operation: \textbf{insert}(3) mit opt. Position: \textbf{9}
+	\begin{table}
+		\centering
+		\begin{tabular}{c|c|c|c|c|c|c|c|c|c|c|c|c}
+			0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 \\
+			\hline
+			  &   &   &   &   &   &   &   &   &   &    &    &    \\
+		\end{tabular}
+	\end{table}
+
+	3. Operation: \textbf{insert}(12) mit opt. Position: \textbf{10}
+	\begin{table}
+		\centering
+		\begin{tabular}{c|c|c|c|c|c|c|c|c|c|c|c|c}
+			0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 \\
+			\hline
+			  &   &   &   &   &   &   &   &   &   &    &    &    \\
+		\end{tabular}
+	\end{table}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Aufgabe 11.3 Linear Probing}
+	4. Operation: \textbf{insert}(17) mit opt. Position: \textbf{12}
+	\begin{table}
+		\centering
+		\begin{tabular}{c|c|c|c|c|c|c|c|c|c|c|c|c}
+			0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 \\
+			\hline
+			  &   &   &   &   &   &   &   &   &   &    &    &    \\
+		\end{tabular}
+	\end{table}
+
+	5. Operation: \textbf{insert}(29) mit opt. Position: \textbf{9}
+	\begin{table}
+		\centering
+		\begin{tabular}{c|c|c|c|c|c|c|c|c|c|c|c|c}
+			0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 \\
+			\hline
+			  &   &   &   &   &   &   &   &   &   &    &    &    \\
+		\end{tabular}
+	\end{table}
+
+	6. Operation: \textbf{insert}(10) mit opt. Position: \textbf{4}
+	\begin{table}
+		\centering
+		\begin{tabular}{c|c|c|c|c|c|c|c|c|c|c|c|c}
+			0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 \\
+			\hline
+			  &   &   &   &   &   &   &   &   &   &    &    &    \\
+		\end{tabular}
+	\end{table}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Aufgabe 11.3 Linear Probing}
+	7. Operation: \textbf{insert}(24) mit opt. Position: \textbf{7}
+	\begin{table}
+		\centering
+		\begin{tabular}{c|c|c|c|c|c|c|c|c|c|c|c|c}
+			0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 \\
+			\hline
+			  &   &   &   &   &   &   &   &   &   &    &    &    \\
+		\end{tabular}
+	\end{table}
+
+	8. Operation: \textbf{delete}(16) mit opt. Position: \textbf{9}
+	\begin{table}
+		\centering
+		\begin{tabular}{c|c|c|c|c|c|c|c|c|c|c|c|c}
+			0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 \\
+			\hline
+			  &   &   &   &   &   &   &   &   &   &    &    &    \\
+		\end{tabular}
+	\end{table}
+
+	9. Operation: \textbf{insert}(5) mit opt. Position: \textbf{2}
+	\begin{table}
+		\centering
+		\begin{tabular}{c|c|c|c|c|c|c|c|c|c|c|c|c}
+			0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 \\
+			\hline
+			  &   &   &   &   &   &   &   &   &   &    &    &    \\
+		\end{tabular}
+	\end{table}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Aufgabe 11.3 Linear Probing}
+	10. Operation: \textbf{insert}(1) mit opt. Position: \textbf{3}
+	\begin{table}
+		\centering
+		\begin{tabular}{c|c|c|c|c|c|c|c|c|c|c|c|c}
+			0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 \\
+			\hline
+			  &   &   &   &   &   &   &   &   &   &    &    &    \\
+		\end{tabular}
+	\end{table}
+
+	11. Operation: \textbf{insert}(15) mit opt. Position: \textbf{6}
+	\begin{table}
+		\centering
+		\begin{tabular}{c|c|c|c|c|c|c|c|c|c|c|c|c}
+			0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 \\
+			\hline
+			  &   &   &   &   &   &   &   &   &   &    &    &    \\
+		\end{tabular}
+	\end{table}
+
+	12. Operation: \textbf{delete}(10) mit opt. Position: \textbf{4}
+	\begin{table}
+		\centering
+		\begin{tabular}{c|c|c|c|c|c|c|c|c|c|c|c|c}
+			0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 \\
+			\hline
+			  &   &   &   &   &   &   &   &   &   &    &    &    \\
+		\end{tabular}
+	\end{table}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Aufgabe 11.3 Linear Probing}
+	13. Operation: \textbf{insert}(14) mit opt. Position: \textbf{3}
+	\begin{table}
+		\centering
+		\begin{tabular}{c|c|c|c|c|c|c|c|c|c|c|c|c}
+			0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 \\
+			\hline
+			  &   &   &   &   &   &   &   &   &   &    &    &    \\
+		\end{tabular}
+	\end{table}
+
+	14. Operation: \textbf{delete}(1) mit opt. Position: \textbf{3}
+	\begin{table}
+		\centering
+		\begin{tabular}{c|c|c|c|c|c|c|c|c|c|c|c|c}
+			0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 \\
+			\hline
+			  &   &   &   &   &   &   &   &   &   &    &    &    \\
+		\end{tabular}
+	\end{table}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Aufgabe 11.4 - Double Hashing}
+	\scriptsize
+	Doppel-Hashing ist eine Methode zur Kollisionsbehandlung. Bei Kollisionen kommt eine
+	Sondierungsfunktion zum Einsatz, die eine sekundäre Hashfunktion beinhaltet:
+	$$s(x, i) = i \cdot h_2(x), i \in \mathbb{N}_0$$
+
+	Diese Sondierungsfunktion wird angewendet, falls der durch die primare Hashfunktion $h_1(x)$
+	berechnete Index bereits besetzt ist. Dabei wird $i$ beginnend bei $0$ bei jedem Versuch um $1$
+	erhöht. Die vollständige Hashfunktion lautet dann:
+	$$h(x, i) = (h_1(x) + s(x, i)) \mod m$$
+
+	Verwenden Sie im Folgenden die Hashfunktionen
+	\begin{align*}
+		 & h_1(x) = (3x + 1) \mod m      \\
+		 & h_2(x) = 1 + (x \mod (m - 1))
+	\end{align*}
+
+	a) Geben Sie die vollständige Hashfunktion $h(x, i)$ für eine Tabelle der Länge $m = 13$ an. \\
+	b) Veranschaulichen Sie schrittweise das Einfügen der Schlüssel $12, 23, 13, 56, 26$ $45, 24, 94, 42$ in eine Hashtabelle der Länge $m = 13$.
+\end{frame}
+
+\begin{frame}[t]
+	\frametitle{Aufgabe 11.4 - Double Hashing (a)}
+	\small
+	$$h(x, i) = (h_1(x) + s(x, i)) \mod m$$
+	$$s(x, i) = i \cdot h_2(x), i \in \mathbb{N}_0$$
+	\begin{gather*}
+		h_1(x) = (3x + 1) \mod m      \\
+		h_2(x) = 1 + (x \mod (m - 1))
+	\end{gather*}
+	$$\text{Mit } m = 13$$
+\end{frame}
+
+\begin{frame}
+	\frametitle{Aufgabe 11.4 - Double Hashing (b)}
+	\begin{table}
+		\centering
+		\small
+		\begin{tabular}{c|c|c|c|c|c|c|c|c|c|c|c|c|c}
+			          & $0$ & $1$ & $2$ & $3$ & $4$ & $5$ & $6$ & $7$ & $8$ & $9$ & $10$ & $11$ & $12$ \\
+			\hline
+			ins($12$) &     &     &     &     &     &     &     &     &     &     &      &      &      \\
+			\hline
+			ins($23$) &     &     &     &     &     &     &     &     &     &     &      &      &      \\
+			\hline
+			ins($13$) &     &     &     &     &     &     &     &     &     &     &      &      &      \\
+			\hline
+			ins($56$) &     &     &     &     &     &     &     &     &     &     &      &      &      \\
+			\hline
+			ins($26$) &     &     &     &     &     &     &     &     &     &     &      &      &      \\
+			\hline
+			ins($45$) &     &     &     &     &     &     &     &     &     &     &      &      &      \\
+			\hline
+			ins($24$) &     &     &     &     &     &     &     &     &     &     &      &      &      \\
+			\hline
+			ins($94$) &     &     &     &     &     &     &     &     &     &     &      &      &      \\
+			\hline
+			ins($42$) &     &     &     &     &     &     &     &     &     &     &      &      &      \\
+			\hline
+		\end{tabular}
+	\end{table}
+\end{frame}
+
+\section{E-Aufgaben}
+\begin{frame}
+	\frametitle{E-Aufgaben}
+	\begin{itemize}
+		\item Aufgabe 11.5 - Bad Hash \\
+		      \begin{itemize}
+			      \item Intuition zu Hashfunktion
+		      \end{itemize}
+		\item Aufgabe 11.6 - Linear Probing \\
+		      \begin{itemize}
+			      \item Abgeänderte Aufgabe aus Tutorium
+		      \end{itemize}
+	\end{itemize}
+\end{frame}
+
+\section{Hausaufgaben}
+\begin{frame}
+	\frametitle{Hausaufgaben}
+	\begin{itemize}
+		\item Hausaufgabe 9 - AB-Baum \\
+		      (Deadline: 09.07.2025)
+		\item Hausaufgabe 10 - Simple Hashing with Chaining \\
+		      (Deadline: 16.07.2025)
+		\item Hausaufgabe 11 - Double Hashing \\
+		      (Deadline: 23.07.2025)
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\textbf{Fragen?}
+	\begin{itemize}
+		\item Nach Übung gerne bei mir melden
+		\item Tutoriumschannel oder DM an mich auf Zulip
+		\item Vorlesungschannels von GAD auf Zulip (insbesondere bei Hausaufgaben)
+	\end{itemize}
+
+	\medskip
+	\textbf{Feedback oder Verbesserungsvorschläge?} \\
+	Gerne nach dem Tutorium mit mir quatschen oder DM auf Zulip
+
+	\medskip
+	\textbf{Bis nächste Woche!}
+\end{frame}
+
+% End Slides
+
+\end{document}
