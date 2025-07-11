@@ -268,7 +268,7 @@
 	\frametitle{Aufgabe 12.3 - Graph Algorithmen}
 	\small
 	Gegeben sei der folgende Graph. Bearbeiten Sie mit diesem folgende Teilaufgaben:
-	\begin{enumerate}[label=\textcolor{black}{\alph*)},align=left,leftmargin=*,itemsep=1em,start=8]
+	\begin{enumerate}[label=\textcolor{black}{\alph*)},align=left,leftmargin=*,itemsep=0.75em]
 		\item Nennen Sie die Reihenfolge, in der eine Tiefensuche, die bei Knoten $0$ gestartet wird,
 		      die Knoten des Graphen besucht, wenn die Nachbarn eines Knotens in aufsteigender
 		      Reihenfolge entsprechend der natürlichen Zahlenordnung bearbeitet werden.
@@ -282,25 +282,107 @@
 	\end{enumerate}
 \end{frame}
 
+\begin{frame}
+	\frametitle{Aufgabe 12.3 - Graph Algorithmen}
+
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.7\textwidth]{images/graph12_3.png}
+	\end{figure}
+\end{frame}
+
+
 
 
 \begin{frame}
-	\frametitle{Aufgabe 12.2 - Multiple Choice}
+	\frametitle{Aufgabe 12.4 - Netzwerk}
+	\small
+	Wir stellen uns ein soziales Netzwerk als Graph vor. In diesem Graph bilden die Personen des
+	Netzwerks die Knoten. Sind zwei Personen befreundet, gibt es im Graphen eine ungerichtete
+	Kante zwischen den entsprechenden Knoten.
 
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.6\textwidth]{images/graph12_4.png}
+	\end{figure}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Aufgabe 12.4 - Netzwerk}
+	\small
+	\begin{enumerate}[label=\textcolor{black}{\alph*)},align=left,leftmargin=*,itemsep=0.75em]
+		\item Wie kann man mit Hilfe der Tiefensuche feststellen, ob es einen Weg zwischen zwei
+		      Personen in dem sozialen Netzwerk gibt? In diesem Fall sagen wir, dass sich diese
+		      beiden Personen kennen.
+		\item Überlegen Sie sich einen Algorithmus (basierend auf der Breitensuche), um festzustellen,
+		      über wieviele Personen sich zwei Personen minimal kennen. Z.B. kennt Milhouse
+		      Gerald minimal über zwei weitere Person (Lisa oder Bart und Maggie).
+		\item Ergänzen Sie Ihren Algorithmus, so dass er eine kürzeste Verbindung ausgibt. Zum
+		      Beispiel für die Verbindung Milhouse - Gerald wird ”Milhouse - Bart - Maggie - Gerald“
+		      ausgegeben.
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}[t]
+	\frametitle{Aufgabe 12.4 - Netzwerk}
+	\small
+	\begin{enumerate}[label=\textcolor{black}{\alph*)},align=left,leftmargin=*,itemsep=0.75em]
+		\item Wie kann man mit Hilfe der Tiefensuche feststellen, ob es einen Weg zwischen zwei
+		      Personen in dem sozialen Netzwerk gibt? In diesem Fall sagen wir, dass sich diese
+		      beiden Personen kennen.
+		      ausgegeben.
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}[t]
+	\frametitle{Aufgabe 12.4 - Netzwerk}
+	\small
+	\begin{enumerate}[label=\textcolor{black}{\alph*)},align=left,leftmargin=*,itemsep=0.75em,start=2]
+		\item Überlegen Sie sich einen Algorithmus (basierend auf der Breitensuche), um festzustellen,
+		      über wieviele Personen sich zwei Personen minimal kennen. Z.B. kennt Milhouse
+		      Gerald minimal über zwei weitere Person (Lisa oder Bart und Maggie).
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}[t]
+	\frametitle{Aufgabe 12.4 - Netzwerk}
+	\small
+	\begin{enumerate}[label=\textcolor{black}{\alph*)},align=left,leftmargin=*,itemsep=0.75em,start=3]
+		\item Ergänzen Sie Ihren Algorithmus, so dass er eine kürzeste Verbindung ausgibt. Zum
+		      Beispiel für die Verbindung Milhouse - Gerald wird ”Milhouse - Bart - Maggie - Gerald“
+		      ausgegeben.
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}[t]
+	\frametitle{Aufgabe 12.4 - Netzwerk (Zusatz)}
+	\small
+	\begin{enumerate}[label=\textcolor{black}{\alph*)},align=left,leftmargin=*,itemsep=0.75em,start=4]
+		\item Für Interessierte: Überlegen Sie sich, wie man diese Aufgabe in einem gerichteten
+		      Graphen lösen könnte. \\
+		      Übertragen auf das gegebene Beispiel könnte man eine gerichtete Kante (Marge, Krusty) einfügen, denn Marge kennt Krusty,
+		      dieser kennt Marge aber nicht. Wie findet man nun heraus, dass es zwischen zwei Personen sowohl eine
+		      Verbindung in die eine Richtung, als auch eine in die andere Richtung gibt?
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Aufgabe 12.5 - Klausurvorbereitung}
+
+	Nächste Woche: Letztes Tutorium, nur zwei Aufgaben!
+
+	\bigskip
+	Schickt mir gerne konkrete Fragen zu Themen, die ihr noch nicht verstanden habt oder
+	wo ihr noch unsicher seid.
 \end{frame}
 
 \section{E-Aufgaben}
 \begin{frame}
 	\frametitle{E-Aufgaben}
 	\begin{itemize}
-		\item Aufgabe 11.5 - Bad Hash \\
-		      \begin{itemize}
-			      \item Intuition zu Hashfunktion
-		      \end{itemize}
-		\item Aufgabe 11.6 - Linear Probing \\
-		      \begin{itemize}
-			      \item Abgeänderte Aufgabe aus Tutorium
-		      \end{itemize}
+		\item Aufgabe 12.6 - Multiple Choice 2
+		\item Aufgabe 12.7 - Rückblick: Radixsort
+		\item Aufgabe 12.8 - Klausurvorbereitung: Lückencode
 	\end{itemize}
 \end{frame}
 
@@ -308,12 +390,12 @@
 \begin{frame}
 	\frametitle{Hausaufgaben}
 	\begin{itemize}
-		\item Hausaufgabe 9 - AB-Baum \\
-		      (Deadline: 09.07.2025)
 		\item Hausaufgabe 10 - Simple Hashing with Chaining \\
 		      (Deadline: 16.07.2025)
 		\item Hausaufgabe 11 - Double Hashing \\
 		      (Deadline: 23.07.2025)
+		\item Hausaufgabe 12 - Graphen \\
+		      (Deadline: 30.07.2025)
 	\end{itemize}
 \end{frame}
 
